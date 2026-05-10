@@ -1,0 +1,383 @@
+[
+  {
+    "v": 11,
+    "name": "SAE",
+    "folders": [
+      {
+        "v": 11,
+        "name": "userAuth",
+        "folders": [],
+        "requests": [
+          {
+            "v": "17",
+            "name": "me",
+            "method": "GET",
+            "endpoint": "http://localhost:3000/api/me",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWIzMDJmMDRhYjBlNzg2MjY2ODQ0NWYiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VybmFtZSI6Im5hbWUiLCJpYXQiOjE3NzMzMzkzNzYsImV4cCI6MTc3NTkzMTM3Nn0.n7F3H5W_FZV7UETVYGAxOylnS4UdtvBEH7Gow1vgDMk",
+              "authActive": true
+            },
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          },
+          {
+            "v": "17",
+            "name": "login",
+            "method": "POST",
+            "endpoint": "http://localhost:3000/api/login",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"email\": \"test@mail.com\",\n  \"password\": \"secret123\"\n}\n"
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          }
+        ],
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "headers": [],
+        "variables": [],
+        "description": null
+      },
+      {
+        "v": 11,
+        "name": "userAction",
+        "folders": [],
+        "requests": [
+          {
+            "v": "17",
+            "name": "getMyList",
+            "method": "GET",
+            "endpoint": "http://0.0.0.0:3001/users/me/list",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWIzMDJmMDRhYjBlNzg2MjY2ODQ0NWYiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VybmFtZSI6Im5hbWUiLCJpYXQiOjE3NzMzMzkzNzYsImV4cCI6MTc3NTkzMTM3Nn0.n7F3H5W_FZV7UETVYGAxOylnS4UdtvBEH7Gow1vgDMk",
+              "authActive": true
+            },
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          },
+          {
+            "v": "17",
+            "name": "addToListMe",
+            "method": "PATCH",
+            "endpoint": "http://localhost:3001/users/me/list",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWJiMWI4MGRkNTc1N2E2ODQ4MGViOTciLCJlbWFpbCI6Im1haWxAbWFpbC5jb20iLCJ1c2VybmFtZSI6Impob24iLCJpYXQiOjE3NzM4Njk5NTIsImV4cCI6MTc3NjQ2MTk1Mn0.9ooWWqROI3EkMwRLA9JfLDpgkffFu0g8DTpYk0C-v3o",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"animeId\": 1\n}"
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          },
+          {
+            "v": "17",
+            "name": "deleteToListMe",
+            "method": "DELETE",
+            "endpoint": "http://localhost:3001/users/me/list/1",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWJiMWI4MGRkNTc1N2E2ODQ4MGViOTciLCJlbWFpbCI6Im1haWxAbWFpbC5jb20iLCJ1c2VybmFtZSI6Impob24iLCJpYXQiOjE3NzM4Njk5NTIsImV4cCI6MTc3NjQ2MTk1Mn0.9ooWWqROI3EkMwRLA9JfLDpgkffFu0g8DTpYk0C-v3o",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": ""
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          },
+          {
+            "v": "17",
+            "name": "addToFavorite",
+            "method": "PUT",
+            "endpoint": "http://localhost:3001/users/me/favorites/20",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWJiMWI4MGRkNTc1N2E2ODQ4MGViOTciLCJlbWFpbCI6Im1haWxAbWFpbC5jb20iLCJ1c2VybmFtZSI6Impob24iLCJpYXQiOjE3NzM4Njk5NTIsImV4cCI6MTc3NjQ2MTk1Mn0.9ooWWqROI3EkMwRLA9JfLDpgkffFu0g8DTpYk0C-v3o",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"animeId\": 1\n}"
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          },
+          {
+            "v": "17",
+            "name": "deleteToFavMe",
+            "method": "DELETE",
+            "endpoint": "http://localhost:3001/users/me/list",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWI4MzU2MDAwN2ZjY2NlMjFlYmJiNDMiLCJlbWFpbCI6Im1haWxAbWFpbC5jb20iLCJ1c2VybmFtZSI6Impob24iLCJpYXQiOjE3NzM2Nzk5NjgsImV4cCI6MTc3NjI3MTk2OH0.n5DUkjLlpIb8776tBTdPu9cDs6bsHmQahnLGJhzRU2s",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"animeId\": 1\n}"
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          },
+          {
+            "v": "17",
+            "name": "setVisibilityGhost",
+            "method": "PATCH",
+            "endpoint": "http://localhost:3001/users/me/visibility",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWJiMWI4MGRkNTc1N2E2ODQ4MGViOTciLCJlbWFpbCI6Im1haWxAbWFpbC5jb20iLCJ1c2VybmFtZSI6Impob24iLCJpYXQiOjE3NzM4Njk5NTIsImV4cCI6MTc3NjQ2MTk1Mn0.9ooWWqROI3EkMwRLA9JfLDpgkffFu0g8DTpYk0C-v3o",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"visibility\": \"public\"\n}"
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          },
+          {
+            "v": "17",
+            "name": "getMe",
+            "method": "GET",
+            "endpoint": "http://0.0.0.0:3000/api/v0/users/me",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM0NTBiMzVmZjgwZTVmOWQ0NjJlNmYiLCJlbWFpbCI6Im1haWxAbWFpbC5jb20iLCJ1c2VybmFtZSI6Impob24iLCJpYXQiOjE3NzQ0NzMzOTUsImV4cCI6MTc3NDQ3Njk5NX0.NngJyCP6MASEcLIM42sAaXbcvt5D01eVgo5V68UArnU",
+              "authActive": true
+            },
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          },
+          {
+            "v": "17",
+            "name": "addToFavorite",
+            "method": "DELETE",
+            "endpoint": "http://localhost:3001/users/me/favorites/20",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWJiMWI4MGRkNTc1N2E2ODQ4MGViOTciLCJlbWFpbCI6Im1haWxAbWFpbC5jb20iLCJ1c2VybmFtZSI6Impob24iLCJpYXQiOjE3NzM4Njk5NTIsImV4cCI6MTc3NjQ2MTk1Mn0.9ooWWqROI3EkMwRLA9JfLDpgkffFu0g8DTpYk0C-v3o",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"animeId\": 1\n}"
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          }
+        ],
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "headers": [],
+        "variables": [],
+        "description": null
+      },
+      {
+        "v": 11,
+        "name": "OthersActions",
+        "folders": [],
+        "requests": [
+          {
+            "v": "17",
+            "name": "jhon",
+            "method": "GET",
+            "endpoint": "http://localhost:3001/users/profile/jhon/",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "body": {
+              "contentType": null,
+              "body": null
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          }
+        ],
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "headers": [],
+        "variables": [],
+        "description": null
+      }
+    ],
+    "requests": [],
+    "auth": {
+      "authType": "none",
+      "authActive": true
+    },
+    "headers": [],
+    "variables": [],
+    "description": ""
+  },
+  {
+    "v": 11,
+    "name": "seed",
+    "folders": [
+      {
+        "v": 11,
+        "name": "AUTH-USER",
+        "folders": [],
+        "requests": [
+          {
+            "v": "17",
+            "name": "addToList",
+            "method": "PUT",
+            "endpoint": "http://localhost:3001/users/me/list",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "bearer",
+              "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWIzMDJmMDRhYjBlNzg2MjY2ODQ0NWYiLCJlbWFpbCI6InRlc3RAbWFpbC5jb20iLCJ1c2VybmFtZSI6Im5hbWUiLCJpYXQiOjE3NzMzMzkzNzYsImV4cCI6MTc3NTkzMTM3Nn0.n7F3H5W_FZV7UETVYGAxOylnS4UdtvBEH7Gow1vgDMk",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"animeId\": 1\n}\n"
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          }
+        ],
+        "auth": {
+          "authType": "none",
+          "authActive": true
+        },
+        "headers": [],
+        "variables": [],
+        "description": ""
+      },
+      {
+        "v": 11,
+        "name": "GW",
+        "folders": [],
+        "requests": [
+          {
+            "v": "17",
+            "name": "GW-register",
+            "method": "POST",
+            "endpoint": "http://localhost:3000/api/register",
+            "params": [],
+            "headers": [],
+            "preRequestScript": "",
+            "testScript": "",
+            "auth": {
+              "authType": "inherit",
+              "authActive": true
+            },
+            "body": {
+              "contentType": "application/json",
+              "body": "{\n  \"email\": \"test@mail.com\",\n  \"username\": \"name\",\n  \"password\": \"secret123\"\n}\n"
+            },
+            "requestVariables": [],
+            "responses": {},
+            "description": null
+          }
+        ],
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "headers": [],
+        "variables": [],
+        "description": null
+      }
+    ],
+    "requests": [],
+    "auth": {
+      "authType": "none",
+      "authActive": true
+    },
+    "headers": [],
+    "variables": [],
+    "description": ""
+  }
+]

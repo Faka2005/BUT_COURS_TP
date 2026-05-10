@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        const test1= function() {
+            let x = 1;
+            test2 = function() {
+                let x = 2;
+                test3 = function() {
+                    let x = 3;
+                    console.log(x);
+                }();
+            }();
+            console.log(x);
+        }();
+
+    </script>
+</body>
+</html>

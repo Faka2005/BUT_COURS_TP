@@ -1,0 +1,162 @@
+# Td Architecture des réseaux : configuration d'un serveur web Apache
+
+## 3.1 Premier site
+
+### Site par défaut
+
+* Désactivez le site initial
+a2dissite 000-default
+
+* Créez un fichier `web.conf` dans `/etc/apache2/sites-available/`
+* En vous inspirant de l'exemple plus haut, définissez votre site :
+<VirtualHost *:80>
+  ServerAdmin webmasterX@fai.com
+
+  DocumentRoot /var/www/html/web
+  
+  ServerName wwwX.fai.com
+
+  DirectoryIndex index.html
+
+  <Directory /var/www/html/web>
+      Options Indexes FollowSymLinks
+      AllowOverride None
+      Require all granted
+  </Directory>
+</VirtualHost>
+
+
+  
+* Activez ce site
+a2ensite web
+
+### Fichier par défaut
+
+* Modifiez la configuration d'Apache pour que les pages par défaut soient `index.html` et `default.html`.
+DirectoryIndex index.html default.html
+
+### Gestion des permissions
+*  faites en sorte que le listing du contenu du répertoire `listing` soit affiché (toujours). Testez.
+* Pour le répertoire `bizarre`, aucun listing ne doit s'afficher et `default.html` est prioritaire sur `index.html` 
+* Pas de listing, ni de contenu par défaut pour le répertoire `rien`
+
+  <Directory /var/www/html/web/listing>
+    DirectoryIndex disabled     
+    Require all granted
+  </Directory>
+  
+  <Directory /var/www/html/web/bizarre>
+    Options -Indexes
+    DirectoryIndex default.html index.html
+    Require all granted
+  </Directory>
+  
+  <Directory /var/www/html/web/rien>
+    Options -Indexes
+    DirectoryIndex disabled
+    Require all granted
+  </Directory>
+
+
+## 3.2 Serveurs virtuels
+
+
+### Serveur virtuel par nom
+<VirtualHost *:80>
+  ServerAdmin webmasterX@fai.com
+  DocumentRoot /var/www/html/web2
+  
+  ServerName wX.fai.com
+
+  <Directory /var/www/html/web2>
+      Options Indexes FollowSymLinks
+      AllowOverride None
+      Require all granted
+  </Directory>
+</VirtualHost>
+
+
+### Serveur virtuel par adresse
+
+<VirtualHost 192.168.X.2:80>
+  ServerAdmin webmasterX@fai.com
+
+  DocumentRoot /var/www/html/web3
+  
+  ServerName wwX.fai.com
+
+  DirectoryIndex index.html
+
+  <Directory /var/www/html/web3>
+      Options Indexes FollowSymLinks
+      AllowOverride None
+      Require all granted
+  </Directory>
+</VirtualHost>
+
+
+### Serveur virtuel par port (subsidiaire = à faire à la fin)
+
+On souhaite mettre en oeuvre un site de test accessible par :
+`http://wwwX.fai.com:8080`.
+
+* Modifiez la configuration d'Apache pour écouter sur les deux ports (doubler la directive `Listen` dans le fichier
+  `ports.conf`)
+  Listen 80
+  Liste 8080
+
+<VirtualHost *:8080>
+  ServerAdmin webmasterX@fai.com
+
+  DocumentRoot /var/www/html/web4
+  
+  ServerName wwwX.fai.com
+
+  DirectoryIndex index.html
+
+  <Directory /var/www/html/web4>
+      Options Indexes FollowSymLinks
+      AllowOverride None
+      Require all granted
+  </Directory>
+</VirtualHost>
+
+
+## 3.3 Répertoires virtuels
+
+### Cas général
+
+dans `web.conf` (le premier c'est la partie d'url, le deuxième le path local)
+
+Alias /rep1 /var/www/html/rep1
+
+d'où rep1 disponible à l'url http://www.faiX.com/rep1
+
+
+et rep2 disponible sans rien faire à l'url http://www.faiX.com/rep2
+
+
+### Cas particulier des répertoires de publication des utilisateurs
+
+* 
+adduser foo
+* Activez le module `userdir`.
+a2enmod userdir
+* Vérifiez la configuration de ce module.
+cat /etc/apache2/mods-available/userdir.conf 
+<IfModule mod_userdir.c>
+        UserDir public_html
+        UserDir disabled root
+
+        <Directory /home/*/public_html>
+                AllowOverride FileInfo AuthConfig Limit
+                Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+        </Directory>
+</IfModule>
+
+* Testez : `http://wwwX.fai.com/~foo/`.
+Attention : il faut que l'utilisateur `www-data` ait des droits de lecture sur la ressource demandée
+
+## 3.4 Php
+
+tout est donné dans le sujet

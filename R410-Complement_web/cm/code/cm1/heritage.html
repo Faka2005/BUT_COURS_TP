@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Animal {
+        #nom; //atribut privé
+        //Le constructeur des valeurs par défaut sont possibles
+        //pour les paramètres
+        constructor(nom) {
+            this.#nom = nom || "Truc";
+
+        }
+        //Une note
+        parle() {
+            console.log(`${this.nom} fait du bruit.`);
+        }
+
+        //un accesseur
+        get nom(){
+            return this.#nom.toUpperCase();
+        }
+
+        //Une toString
+        toString() {
+            return `Animal : ${this.nom}`;
+        }
+    }
+
+    //heritage
+    class Chien extends Animal {
+        constructor(nom="JoJo") {
+            super(nom); // appelle le constructeur parent avec le paramètre
+        }
+        parle() {
+            console.log(`${this.nom} aboie.`);
+        }
+    }
+
+    //test
+    let animal = new Animal();
+    const nom = animal.nom;
+    console.log(animal, nom);
+    animal.parle();
+    animal = new Chien();
+    animal.parle();
+</script>
+</body>
+</html>

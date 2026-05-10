@@ -1,0 +1,77 @@
+package testexo1v1
+
+import exo1.v1.BoissonEauChaude
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import univ.nantes.UMLChecker
+import kotlin.reflect.KVisibility
+
+
+/***** Generated JUnit/UMLChecker Test Cases for BoissonEauChaude *****/
+
+class TestUMLBoissonEauChaude {
+
+lateinit var uml : UMLChecker
+
+@BeforeEach
+fun init() {
+    uml = UMLChecker.create(BoissonEauChaude::class)
+}
+
+@Test
+fun `test0 - class BoissonEauChaude is abstract or not`() {
+    uml.isAbstract(true)
+}
+
+@Test
+fun `test1 - class BoissonEauChaude is open or not`() {
+    uml.isOpen(false)
+}
+
+@Test
+fun `test2 - 'BoissonEauChaude' extends other classe(s)`() {
+    uml.extendNothing()
+}
+
+@Test
+fun construct() {
+    uml.constructorCheck()
+}
+
+@Test
+fun `test3 - 'BoissonEauChaude' has attribute(s)`() {
+    uml.attributeNumber(0)
+}
+
+@Test
+fun `test4 - 'BoissonEauChaude' has method(s)`() {
+    uml.methodNumber(5)
+}
+
+@Test
+fun `test5 - 'BoissonEauChaude' has a method 'suivreRecette'`() {
+    uml.methodCheck("suivreRecette", String::class, methParamAndTypes=arrayOf(Pair("supplément", Boolean::class)))
+}
+
+@Test
+fun `test6 - 'BoissonEauChaude' has a method 'faireBouillirEau'`() {
+    uml.methodCheck("faireBouillirEau", String::class, methVisibility= KVisibility.PRIVATE)
+}
+
+@Test
+fun `test7 - 'BoissonEauChaude' has a method 'preparer'`() {
+    uml.methodCheck("preparer", String::class, isAbstract=true)
+}
+
+@Test
+fun `test8 - 'BoissonEauChaude' has a method 'verserDansTasse'`() {
+    uml.methodCheck("verserDansTasse", String::class, methVisibility= KVisibility.PRIVATE)
+}
+
+@Test
+fun `test9 - 'BoissonEauChaude' has a method 'ajouterSupplement'`() {
+    uml.methodCheck("ajouterSupplement", String::class, isAbstract=true)
+}
+
+
+}

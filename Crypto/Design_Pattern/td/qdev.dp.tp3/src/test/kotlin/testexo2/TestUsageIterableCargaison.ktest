@@ -1,0 +1,85 @@
+package testexo2
+
+import exo2.Cargaison
+import exo2.Marchandise
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+
+class TestUsageIterableCargaison {
+
+    lateinit var  cargaison : Cargaison
+
+    @BeforeEach
+    fun reinitialise() {
+        cargaison = Cargaison.donne(10, Cargaison.CARGAISON.ROUTIERE, false)
+        for (i in 0..70) {
+            cargaison.ajouter(Marchandise(1.0 * i, 10.0))
+        }
+    }
+
+    @Test
+    fun testIterateur() {
+        val iterateur = cargaison.iterator()
+        var poidsTotal = 0.0
+        var volumeTotal = 0.0
+        var compteurMarchandises = 0
+        while(iterateur.hasNext()) {
+            val marchandiseCourante = iterateur.next()
+            poidsTotal += marchandiseCourante.donnePoids()
+            volumeTotal += marchandiseCourante.donneVolume()
+            compteurMarchandises++
+        }
+        assertEquals(71, compteurMarchandises)
+        assertEquals(2485.0, poidsTotal)
+        assertEquals(710.0, volumeTotal)
+    }
+
+    @Test
+    fun testForEach() {
+        var poidsTotal = 0.0
+        var volumeTotal = 0.0
+        var compteurMarchandises = 0
+
+        for(marchandise in cargaison) {
+            poidsTotal += marchandise.donnePoids()
+            volumeTotal += marchandise.donneVolume()
+            compteurMarchandises++
+        }
+        assertEquals(71, compteurMarchandises)
+        assertEquals(2485.0, poidsTotal)
+        assertEquals(710.0, volumeTotal)
+    }
+
+    @Test
+    fun testForEach_ordre() {
+        var i = 0
+        for(marchandise in cargaison) {
+            assertEquals(1.0 * i, marchandise.donnePoids())
+            assertEquals(10.0, marchandise.donneVolume())
+            i++
+        }
+    }
+
+    @Test
+    fun testIterationCargaisonVide() {
+        val cargaison = Cargaison.donne(10, Cargaison.CARGAISON.FLUVIALE)
+        val iterateur = cargaison.iterator()
+        assertFalse(iterateur.hasNext())
+    }
+
+
+    @Test
+    fun testNextApresFin() {
+        val cargaison = Cargaison.donne(10, Cargaison.CARGAISON.FLUVIALE)
+        cargaison.ajouter(Marchandise(5.0, 2.0))
+        val iterateur = cargaison.iterator()
+        assertTrue(iterateur.hasNext())
+        iterateur.next()
+        assertFalse(iterateur.hasNext())
+        assertThrows(IndexOutOfBoundsException::class.java) {
+            iterateur.next()
+        }
+    }
+}
+

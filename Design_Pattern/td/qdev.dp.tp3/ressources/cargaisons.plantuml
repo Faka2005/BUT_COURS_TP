@@ -1,0 +1,68 @@
+@startuml
+hide circle
+skinparam monochrome true
+skinparam classAttributeIconSize 0
+skinparam backgroundcolor white
+'skinparam groupInheritance 2
+
+class Marchandise {
+    - poids : Double
+    - volume : Double
+    + <<create>> Marchandise(poids : Double, volume : Double)
+    + donneVolume() : Double
+    + donnePoids() : Double
+}
+
+class UrgentImpossibleException {
+
+}
+
+class Cargaison <<abstract>> {
+    - distance : Int
+    - encombrementActuel : Double = 0.0
+    # <<create>> Cargaison(distance : Int)
+    + ajouter(marchandise : Marchandise) : Boolean
+    + rechercher(marchandise : Marchandise) : Int
+    + cout() : Double
+    # <<abstract>> limite() : Double
+    # facteur() : Int
+    # encombrement(marchandise : Marchandise) : Double
+    + {static} donne(distance : Int, type : CARGAISON, urgente : Boolean = false) : Cargaison
+}
+
+class CargaisonFluviale {
+    + <<create>> CargaisonFluviale(distance : Int)
+    # limite() : Double
+}
+
+class CargaisonRoutiere {
+    + <<create>> CargaisonRoutiere(distance : Int)
+    # limite() : Double
+    # facteur() : Int
+}
+
+CargaisonFluviale -up-|> Cargaison
+
+CargaisonRoutiere -up-|> Cargaison
+
+class CargaisonAerienne {
+    + <<create>> CargaisonAerienne(distance : Int)
+    # limite() : Double
+    # facteur() : Int
+    # encombrement(marchandise : Marchandise) : Double
+}
+
+CargaisonAerienne -up-|> Cargaison
+
+class CargaisonAerienneUrgente {
+    + <<create>> CargaisonAerienneUrgente(distance : Int)
+    # facteur() : Int
+}
+
+CargaisonAerienneUrgente -up-|> CargaisonAerienne
+
+Marchandise "0..100\n-marchandises\t" <-- "0..1" Cargaison : contient <
+
+
+
+@enduml

@@ -1,0 +1,72 @@
+@startuml
+hide circle
+'skinparam monochrome true
+skinparam classAttributeIconSize 0
+skinparam backgroundcolor white
+'skinparam groupInheritance 2
+
+class kotlin.collections.Iterable<E> <<interface>>  #aliceblue {
+    iterator() : Iterator<E>
+}
+
+class kotlin.collections.Iterator<E> <<interface>>  #aliceblue {
+    hasNext() : Boolean
+    next() : E
+}
+
+class File<E> <<interface>>  #aliceblue {
+    insererEnQueue(element : E)
+    supprimerEnTete()
+    listerDepuisDebut() : List<E>
+    taille() : Int
+    consulter(position : Int) : E
+    listerDepuisFin() : List<E>
+}
+
+
+class FileChainee<E> {
+    ...
+    <<create>> FileChainee()
+    insererEnQueue(element : E)
+    supprimerEnTete()
+    listerDepuisDebut() : List<E>
+    taille() : Int
+    consulter(position : Int) : E
+    listerDepuisFin() : List<E>
+    iterator() : Iterator<E>
+  }
+
+class Cellule<E> #aliceblue {
+    - valeur : E
+    <<create>> Cellule<E>(valeur : E)
+    + valeur() : E
+    + suivant() : Cellule<E>?
+    + modifieSuivant(nouveauSuivant : Cellule<E>?)
+}
+
+class CelluleIterator<E> {
+    ...
+    <<create>> CelluleIterator(debut : Cellule<E>?)
+    hasNext() : Boolean
+    next() : E
+  }
+
+
+File .up.|> Iterable : <<realizes>>
+Iterable .right.> Iterator : <<uses>>
+FileChainee .up.|> File : <<realizes>>
+Cellule -[hidden]right-File
+
+FileChainee "1" -up-> "0..1 -debut" Cellule : commence par
+FileChainee "1" -right-> "0..1 -fin" Cellule : termine par
+Cellule "1" -down-> "0..1 \n-suivant" Cellule : est suivie de
+
+class kotlin.NoSuchElementException  #aliceblue {}
+
+File .up.> NoSuchElementException : <<trows>>
+
+FileChainee .right.> CelluleIterator : <<uses>>
+
+CelluleIterator .up.|> Iterator : <<realizes>>
+
+@enduml

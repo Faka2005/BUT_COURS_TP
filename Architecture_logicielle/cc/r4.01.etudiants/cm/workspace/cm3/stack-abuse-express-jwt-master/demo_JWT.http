@@ -1,0 +1,15 @@
+### Access Denied
+GET http://localhost:4000/books
+
+### Obtenion du token
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+"username": "john",
+"password": "password123admin"
+}
+
+### Access Denied
+GET http://localhost:4000/books
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzkzMjU2NzIsImV4cCI6MTczOTMyNjg3Mn0.03GiQ6zd_0QHSPDXWQ-6Yc4auf2uz382q-5sujIg1gE

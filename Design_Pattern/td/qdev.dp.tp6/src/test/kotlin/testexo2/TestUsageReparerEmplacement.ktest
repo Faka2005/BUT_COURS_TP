@@ -1,0 +1,143 @@
+package testexo2
+
+import exo2.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+
+class TestUsageReparerEmplacement {
+
+    private lateinit var spatioport: Spatioport
+
+    @BeforeEach
+    fun setUp() {
+        spatioport = Spatioport(10)
+    }
+
+    @Test
+    fun `reparerEmplacement rend une place inutilisable de nouveau libre`() {
+        spatioport.emplacementInutilisable(0)
+        spatioport.reparerEmplacement(0)
+
+        assertEquals(0, spatioport.nbPlacesInutilisables())
+        assertEquals(10, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `reparerEmplacement sur plusieurs places inutilisables`() {
+        spatioport.emplacementInutilisable(0)
+        spatioport.emplacementInutilisable(3)
+        spatioport.emplacementInutilisable(7)
+
+        spatioport.reparerEmplacement(0)
+        spatioport.reparerEmplacement(7)
+
+        assertEquals(1, spatioport.nbPlacesInutilisables())
+        assertEquals(9, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `reparerEmplacement sur la première place`() {
+        spatioport.emplacementInutilisable(0)
+        spatioport.reparerEmplacement(0)
+
+        assertEquals(0, spatioport.nbPlacesInutilisables())
+    }
+
+    @Test
+    fun `reparerEmplacement sur la dernière place`() {
+        spatioport.emplacementInutilisable(9)
+        spatioport.reparerEmplacement(9)
+
+        assertEquals(0, spatioport.nbPlacesInutilisables())
+    }
+
+    @Test
+    fun `reparerEmplacement avec place inexistante négative lève PlaceInexistanteException`() {
+        assertThrows<PlaceInexistanteException> {
+            spatioport.reparerEmplacement(-1)
+        }
+    }
+
+    @Test
+    fun `reparerEmplacement avec place inexistante supérieure au maximum lève PlaceInexistanteException`() {
+        assertThrows<PlaceInexistanteException> {
+            spatioport.reparerEmplacement(10)
+        }
+    }
+
+    @Test
+    fun `reparerEmplacement sur place libre lève PlaceLibreException`() {
+        assertThrows<PlaceLibreException> {
+            spatioport.reparerEmplacement(0)
+        }
+    }
+
+    @Test
+    fun `reparerEmplacement sur place occupée lève PlaceOccupeeException`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+
+        assertThrows<PlaceOccupeeException> {
+            spatioport.reparerEmplacement(0)
+        }
+    }
+
+    @Test
+    fun `reparerEmplacement permet d'amarrer ensuite sur cette place`() {
+        spatioport.emplacementInutilisable(0)
+        spatioport.reparerEmplacement(0)
+
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+
+        assertEquals(0, spatioport.estAmarreA(vaisseau))
+    }
+
+    @Test
+    fun `reparerEmplacement toutes les places inutilisables`() {
+        repeat(10) { spatioport.emplacementInutilisable(it) }
+        repeat(10) { spatioport.reparerEmplacement(it) }
+
+        assertEquals(0, spatioport.nbPlacesInutilisables())
+        assertEquals(10, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `reparerEmplacement ne change pas le nombre de places totales`() {
+        spatioport.emplacementInutilisable(0)
+        spatioport.emplacementInutilisable(5)
+        spatioport.reparerEmplacement(0)
+
+        assertEquals(10, spatioport.nbPlacesTotales())
+    }
+
+    @Test
+    fun `reparerEmplacement après amarrage sur d'autres places`() {
+        spatioport.emplacementInutilisable(5)
+        val vaisseau = Vaisseau("V1", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+
+        spatioport.reparerEmplacement(5)
+
+        assertEquals(1, spatioport.nbPlacesOccupees())
+        assertEquals(0, spatioport.nbPlacesInutilisables())
+        assertEquals(9, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `reparerEmplacement maintient la cohérence des compteurs`() {
+        spatioport.emplacementInutilisable(0)
+        spatioport.emplacementInutilisable(1)
+        val vaisseau = Vaisseau("V1", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+
+        spatioport.reparerEmplacement(0)
+
+        val total = spatioport.nbPlacesLibres() +
+                spatioport.nbPlacesOccupees() +
+                spatioport.nbPlacesInutilisables()
+        assertEquals(spatioport.nbPlacesTotales(), total)
+    }
+}

@@ -1,0 +1,57 @@
+{
+  "homepage": "http://jonathanfunk.github.io/whats-in-your-kitchen",
+  "name": "whats-in-your-kitchen",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "autosuggest-highlight": "^3.1.1",
+    "axios": "^0.21.1",
+    "react": "^16.12.0",
+    "react-autosuggest": "^9.4.3",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.4.0",
+    "reactjs-popup": "^1.5.0"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "npm run watch:css && react-scripts start",
+    "build": "react-scripts build",
+    "build:tw": "postcss ./src/tailwind.css -o ./src/styles.css --env production",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:styles": "postcss ./src/tailwind.css -o ./src/styles.css",
+    "watch:css": "postcss src/tailwind.css -o src/styles.css",
+    "prebuild": "yarn build:styles",
+    "prestart": "yarn build:styles"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.1.0",
+    "autoprefixer": "^9.7.4",
+    "gh-pages": "^2.2.0",
+    "postcss-cli": "^7.1.0",
+    "prop-types": "^15.7.2",
+    "tailwindcss": "^1.2.0"
+  },
+  "resolutions": {
+    "@babel/preset-env": "^7.8.7"
+  }
+}

@@ -1,0 +1,70 @@
+package testexo2
+
+import exo2.Spatioport
+import exo2.SpatioportException
+import exo2.TypeVaisseau
+import exo2.Vaisseau
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+
+class TestUsageNbPlacesTotales {
+
+    @Test
+    fun `nbPlacesTotales retourne 1 pour un spatioport avec une place`() {
+        val spatioport = Spatioport(1)
+        assertEquals(1, spatioport.nbPlacesTotales())
+    }
+
+    @Test
+    fun `nbPlacesTotales retourne 10 pour un spatioport avec 10 places`() {
+        val spatioport = Spatioport(10)
+        assertEquals(10, spatioport.nbPlacesTotales())
+    }
+
+    @Test
+    fun `nbPlacesTotales retourne 100 pour un spatioport avec 100 places`() {
+        val spatioport = Spatioport(100)
+        assertEquals(100, spatioport.nbPlacesTotales())
+    }
+
+    @Test
+    fun `nbPlacesTotales ne change pas après amarrage d'un vaisseau`() {
+        val spatioport = Spatioport(5)
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+        assertEquals(5, spatioport.nbPlacesTotales())
+    }
+
+    @Test
+    fun `nbPlacesTotales ne change pas après rendre une place indisponible`() {
+        val spatioport = Spatioport(5)
+        spatioport.emplacementInutilisable(0)
+        assertEquals(5, spatioport.nbPlacesTotales())
+    }
+
+    @Test
+    fun `nbPlacesTotales ne change pas après plusieurs opérations`() {
+        val spatioport = Spatioport(5)
+        val vaisseau1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val vaisseau2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        spatioport.amarrer(vaisseau1)
+        spatioport.amarrer(vaisseau2)
+        spatioport.emplacementInutilisable(3)
+        assertEquals(5, spatioport.nbPlacesTotales())
+    }
+
+    @Test
+    fun `création d'un spatioport avec nombre de places négatif lève une exception`() {
+        assertThrows<SpatioportException> {
+            Spatioport(-1)
+        }
+    }
+
+    @Test
+    fun `création d'un spatioport avec nombre de places = 0 lève une exception`() {
+        assertThrows<SpatioportException> {
+            Spatioport(0)
+        }
+    }
+}

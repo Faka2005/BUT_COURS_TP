@@ -1,0 +1,155 @@
+package testexo2
+
+import exo2.Spatioport
+import exo2.TypeVaisseau
+import exo2.Vaisseau
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+
+class TestUsageTonnagesTotalAmarres {
+
+    private lateinit var spatioport: Spatioport
+
+    @BeforeEach
+    fun setUp() {
+        spatioport = Spatioport(10)
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres retourne 0 pour un spatioport vide`() {
+        assertEquals(0, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres retourne le tonnage d'un seul vaisseau`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+
+        assertEquals(TypeVaisseau.CARGO.tonnage, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres retourne la somme des tonnages de plusieurs vaisseaux`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        spatioport.amarrer(v3)
+
+        val tonnageAttendu = TypeVaisseau.CARGO.tonnage +
+                TypeVaisseau.CHASSEUR.tonnage +
+                TypeVaisseau.CROISEUR.tonnage
+        assertEquals(tonnageAttendu, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres diminue après désamarrage`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        val tonnageAvant = spatioport.tonnagesTotalAmarres()
+
+        spatioport.desamarrer(v1)
+
+        assertEquals(tonnageAvant - TypeVaisseau.CARGO.tonnage, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres n'inclut pas les places inutilisables`() {
+        spatioport.emplacementInutilisable(0)
+        spatioport.emplacementInutilisable(1)
+
+        val vaisseau = Vaisseau("V1", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+
+        assertEquals(TypeVaisseau.CARGO.tonnage, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres avec différents types de vaisseaux`() {
+        val cargo = Vaisseau("Cargo", TypeVaisseau.CARGO)
+        val chasseur = Vaisseau("Chasseur", TypeVaisseau.CHASSEUR)
+        val croiseur = Vaisseau("Croiseur", TypeVaisseau.CROISEUR)
+        val destroyer = Vaisseau("Destroyer", TypeVaisseau.FREGATE)
+
+        spatioport.amarrer(cargo)
+        spatioport.amarrer(chasseur)
+        spatioport.amarrer(croiseur)
+        spatioport.amarrer(destroyer)
+
+        val tonnageAttendu = TypeVaisseau.CARGO.tonnage +
+                TypeVaisseau.CHASSEUR.tonnage +
+                TypeVaisseau.CROISEUR.tonnage +
+                TypeVaisseau.FREGATE.tonnage
+        assertEquals(tonnageAttendu, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres après plusieurs amarrages et désamarrages`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        spatioport.desamarrer(v1)
+        spatioport.amarrer(v3)
+
+        val tonnageAttendu = TypeVaisseau.CHASSEUR.tonnage + TypeVaisseau.CROISEUR.tonnage
+        assertEquals(tonnageAttendu, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres pour un spatioport complètement rempli`() {
+        val vaisseaux = List(10) { Vaisseau("V$it", TypeVaisseau.CARGO) }
+        vaisseaux.forEach { spatioport.amarrer(it) }
+
+        assertEquals(TypeVaisseau.CARGO.tonnage * 10, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres retourne 0 après avoir désamarré tous les vaisseaux`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        spatioport.desamarrer(v1)
+        spatioport.desamarrer(v2)
+
+        assertEquals(0, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres avec amarrage à une place spécifique`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerA(vaisseau, 5)
+
+        assertEquals(TypeVaisseau.CARGO.tonnage, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `tonnagesTotalAmarres avec places inutilisables intercalées`() {
+        spatioport.emplacementInutilisable(1)
+        spatioport.emplacementInutilisable(3)
+        spatioport.emplacementInutilisable(5)
+
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        spatioport.amarrer(v3)
+
+        val tonnageAttendu = TypeVaisseau.CARGO.tonnage +
+                TypeVaisseau.CHASSEUR.tonnage +
+                TypeVaisseau.CROISEUR.tonnage
+        assertEquals(tonnageAttendu, spatioport.tonnagesTotalAmarres())
+    }
+}

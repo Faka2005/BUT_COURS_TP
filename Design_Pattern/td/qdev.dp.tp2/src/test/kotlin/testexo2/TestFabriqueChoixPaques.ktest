@@ -1,0 +1,35 @@
+package testexo2
+
+import exo2.PaquesA
+import exo2.PaquesException
+import exo2.PaquesGregorienne
+import exo2.PaquesJulienne
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.Assertions.assertEquals
+
+class TestFabriqueChoixPaques {
+
+    // RENOMMEZ CORRECTEMENT dans les cas de tests la classe abstraite que vous avez du faire apparaitre
+    // ici c'est PaquesA
+
+    @Test
+    fun testChoixPaquesGregorienne() {
+        val paques = PaquesA.choixPaques("gregorienne")
+        assertTrue(paques is PaquesGregorienne)
+    }
+
+    @Test
+    fun testChoixPaquesJulienne() {
+        val paques = PaquesA.choixPaques("julienne")
+        assertTrue(paques is PaquesJulienne)
+    }
+
+    @Test
+    fun testChoixPaquesInvalide() {
+        assertThrows<PaquesException> {
+            PaquesA.choixPaques("invalide")
+        }
+    }
+}

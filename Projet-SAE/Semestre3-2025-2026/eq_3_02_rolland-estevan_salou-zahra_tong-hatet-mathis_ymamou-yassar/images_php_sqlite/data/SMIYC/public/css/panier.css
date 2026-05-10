@@ -1,0 +1,268 @@
+/* --- NOUVEAU LAYOUT PANIER STYLE IMAGE --- */
+
+/* Conteneur principal qui sépare la liste produits du résumé à droite */
+.grid-layout-panier {
+    display: grid;
+    grid-template-columns: 1fr 340px; /* Liste large | Résumé fixe */
+    gap: 40px;
+    align-items: start;
+    margin-top: 20px;
+}
+
+/* 1. La Bannière Promo Bleue */
+.promo-alert {
+    background-color: #eaf6ff; /* Bleu très clair */
+    color: #2b7de1; /* Bleu du texte */
+    border: 1px solid #dcebf7;
+    padding: 15px 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+/* 2. Structure des colonnes (En-têtes et Lignes) */
+/* On définit une grille à 3 colonnes : Large | Moyen | Moyen */
+.cart-header-row, .cart-row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    align-items: center;
+}
+
+/* En-têtes (ARTICLE / QTE / PRIX) */
+.cart-header-row {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    color: #999;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.col-qty, .col-price {
+    text-align: right; /* Aligner les titres vers la droite/centre comme l'image */
+}
+
+/* Mais l'image montre QTE un peu centré par rapport à ses boutons */
+.col-qty {
+    text-align: center;
+}
+
+
+/* 3. Lignes Produits */
+.cart-row {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    /* Pas de bordure visible sur l'image entre les items, mais souvent utile.
+       L'image n'en montre pas, on laisse vide ou on met border-bottom si besoin */
+}
+
+/* Colonne ARTICLE */
+.product-flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.product-thumb {
+    width: 100px;
+    height: auto; /* ou height fixe si tu veux */
+    object-fit: contain;
+    border: 1px solid #f0f0f0; /* Légère bordure grise autour de l'image */
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.product-title {
+    font-size: 1rem;
+    color: #333;
+    text-transform: uppercase; /* POCHETTE en majuscule sur l'image */
+    font-weight: normal;
+}
+
+.product-variant {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* Colonne QTE (Selecteur - 1 +) */
+.qty-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.qty-control {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: normal;
+    padding: 0 5px;
+}
+
+.qty-control:hover {
+    color: #000;
+    font-weight: bold;
+}
+
+.qty-value {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+/* Colonne PRIX + SUPPRIMER */
+.price-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Pousse tout à droite */
+    gap: 20px; /* Espace entre le prix et la croix */
+}
+
+.price-val {
+    font-size: 1rem;
+    color: #333;
+}
+
+.remove-btn-cross {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e0e0e0; /* Cercle gris fond */
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.remove-btn-cross:hover {
+    background: #d0d0d0;
+}
+
+.remove-btn-cross svg path {
+    stroke: white; /* Croix blanche */
+}
+
+/* Si tu veux la croix grise sur fond transparent comme l'image exacte : */
+.remove-btn-cross {
+    background: transparent;
+}
+
+.remove-btn-cross svg path {
+    stroke: #ccc; /* Croix grise */
+}
+
+.remove-btn-cross:hover svg path {
+    stroke: #999;
+}
+
+/* Placeholder for missing product images */
+.img-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-weight: 600;
+}
+
+@media (max-width: 900px) {
+    .img-placeholder {
+        width: 96px;
+        height: 96px;
+    }
+}
+
+@media (max-width: 520px) {
+    .img-placeholder {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+/* Responsive mobile */
+@media (max-width: 768px) {
+    .grid-layout-panier {
+        grid-template-columns: 1fr; /* Stack vertical */
+    }
+
+    .cart-header-row {
+        display: none;
+    }
+
+    /* On cache les titres en mobile */
+    .cart-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .col-qty, .col-price {
+        text-align: left;
+        justify-content: flex-start;
+    }
+}
+
+div.users-card > div {
+    margin-bottom: 1.25rem;
+}
+
+/* Styles spécifiques aux boutons du résumé (colonne de droite) */
+.summary-sidebar .users-card {
+    padding: 18px; /* cohérent avec la vue qui met aussi un padding inline */
+}
+
+.summary-sidebar .users-card .btn {
+    width: 100%;
+    display: inline-block;
+    padding: 12px 14px;
+    background: #111827; /* même couleur que les boutons principaux */
+    color: #ffffff;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.06);
+    transition: background-color 120ms ease, transform 80ms ease, box-shadow 120ms ease;
+}
+
+.summary-sidebar .users-card .btn:hover {
+    background: #0b1220;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 26px rgba(17, 24, 39, 0.08);
+}
+
+/* Bouton secondaire (lien "Continuer mes achats") */
+.summary-sidebar .users-card .btn.secondary {
+    display: block; /* force l'affichage en block */
+    background: transparent;
+    color: #111827;
+    border: 1px solid #e6e8eb;
+    box-shadow: none;
+    font-weight: 600;
+    margin-top: 12px;
+    padding: 10px 12px;
+}
+
+.summary-sidebar .users-card .btn.secondary:hover {
+    background: rgba(17, 24, 39, 0.03);
+}
+
+/* Si une règle inline est présente dans la vue, on s'assure que CSS externe a priorité */
+.summary-sidebar .users-card .btn[style],
+.summary-sidebar .users-card a.btn[style] {
+    width: 100% !important;
+}

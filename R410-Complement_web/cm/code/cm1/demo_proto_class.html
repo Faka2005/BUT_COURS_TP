@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    let Animal = function(nom){
+        this.nom = nom || "toto";
+    }
+    Animal.prototype.crie = function () {
+        return this.nom+" crie";
+    }
+    const jojo = new Animal("Jojo");
+    console.log(jojo, jojo.nom, jojo.crie());*/
+
+    class Animal2 {
+        #nom;
+        constructor(nom) {
+            this.#nom = nom || toto;
+        }
+        crie() {
+            return this.#nom+" crie";
+        }
+
+        get nom() {
+            return this.#nom.toUpperCase();
+        }
+
+        toString() {
+            return "M. "+this.#nom;
+        }
+    }
+
+    let doudou = new Animal2("doudou");
+    console.log(doudou.nom);
+    console.log(doudou); //asseceur
+    console.log(doudou+"");
+    console.log(doudou.crie);
+    console.log(doudou.crie());
+
+</script>
+</body>
+</html>

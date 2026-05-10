@@ -1,0 +1,16 @@
+{
+  "name": "07_parse_csv",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --experimental-test-coverage test/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@fast-csv/format": "^5.0.2",
+    "@fast-csv/parse": "^5.0.2"
+  }
+}

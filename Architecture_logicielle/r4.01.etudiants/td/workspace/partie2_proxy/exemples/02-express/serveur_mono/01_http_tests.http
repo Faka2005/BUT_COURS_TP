@@ -1,0 +1,61 @@
+### findAll
+GET http://localhost:3000/user
+
+### addOK
+POST  http://localhost:3000/user
+Content-Type: application/json
+
+{"login": "jojo","password": "pass"}
+
+### addKO
+POST  http://localhost:3000/user
+Content-Type: application/json
+
+{"login": "jojo","password": "pass2"}
+
+### findByLogin OK
+GET http://localhost:3000/user/jojo
+
+### findByLogin KO
+GET http://localhost:3000/user/raoul
+
+### delete OK
+DELETE http://localhost:3000/user/jojo
+
+### delete KO
+DELETE http://localhost:3000/user/jojo
+
+### addKO2
+POST  http://localhost:3000/user
+Content-Type: application/json
+
+{"login": "jojo","password": "pass"}
+### addKO3
+POST  http://localhost:3000/user
+Content-Type: application/json
+
+{"login": "raoul","password": "pass"}
+
+### update jojo
+PUT http://localhost:3000/user/jojo
+Content-Type: application/json
+
+{"login": "jojo","password": "pass2"}
+
+### update jojo2
+PUT http://localhost:3000/user/jojo
+Content-Type: application/json
+
+{"login": "raoul","password": "pass2"}
+
+### Comportement inatendu
+
+POST  http://localhost:3000/user
+Content-Type: application/json
+
+{"login": "raoul"}
+
+### erreur 500
+POST  http://localhost:3000/user
+Content-Type: application/json
+

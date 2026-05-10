@@ -1,0 +1,23 @@
+# Ignore Go build outputs for client/server/main binaries
+# Common OS/Go build artifacts
+*.exe
+*.out
+*.test
+
+# Ignore compiled binaries named main/client/server anywhere
+**/main
+**/main.exe
+**/client
+**/client.exe
+**/server
+**/server.exe
+
+# Specific paths for this repo
+cmd/client/client
+cmd/client/client.exe
+cmd/server/server
+cmd/server/server.exe
+internal/app/client/client
+internal/app/client/client.exe
+internal/app/server/server
+internal/app/server/server.exe

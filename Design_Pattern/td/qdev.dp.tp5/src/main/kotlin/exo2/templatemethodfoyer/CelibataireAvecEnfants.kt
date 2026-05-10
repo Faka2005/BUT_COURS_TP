@@ -1,0 +1,3 @@
+package exo2.templatemethodfoyer
+
+class CelibataireAvecEnfants

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function Personne () {
+        // Le constructeur Personne() définit `this` comme lui-même.
+        this.age = 0;
+        setInterval(function grandir () {
+        // En mode non strict, la fonction grandir() définit `this` // comme l'objet global et pas comme le `this` defini
+        // par le constructeur Personne().
+            this.age++;
+        }, 1000); }
+        /*
+    var p = new Personne();
+
+    function Personne () { this.age = 0;
+        setInterval(() => {
+            this.age++;
+// |this| fait bien référence à l'objet personne
+        }, 1000); }
+    var p = new Personne();*/
+</script>
+</body>
+</html>

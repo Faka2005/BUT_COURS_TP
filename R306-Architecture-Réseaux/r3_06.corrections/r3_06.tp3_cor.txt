@@ -1,0 +1,119 @@
+# Td Architecture des réseaux : DNS
+
+## Client : configuration
+
+Configuration du solveur
+
+fichier /etc/resolv.conf
+------------------------
+domain tp.com
+nameserver 192.168.0.254
+------------------------
+
+## Serveur :  serveur maitre
+
+fichier /etc/bind/named.conf.default-zones
+------------------------
+zone "." {
+  type hint;
+  file "/usr/share/dns/root.hints";
+};
+
+fichier /etc/bind/named.conf.local
+------------------------
+zone "faiX.com" {
+  type master;
+  file "/etc/bind/db.fai";
+};
+
+-----------------------
+fichier db.fai
+-----------------------
+$ttl 38400
+@ IN  SOA nsX.faiX.com. postmaster.nsX.faiX.com. (
+    1 ; Numero de serie
+    10800 ; Rafraichissement
+    3600  ; Nouvel essai apres 1 heure
+    604800  ; Obsolescence après 1 semaine
+    86400 ) ; TTL minimale de 1 jour
+  
+      IN  NS     nsX.faiX.com.
+nsX   IN  A      192.168.X.1
+autre IN  A      12.52.125.21
+www   IN  CNAME  nsX
+-----------------------
+
+### Serveur : serveur esclave
+
+
+sur nsY modif named.conf.local
+--------------------------------------
+zone "faiX.com" {
+  type slave;
+  file "db.faiX";
+  masters {192.168.X.1;};
+};
+-------------------------------------
+
+sur nsX modif db.fai
+------------------------
+$ttl 38400
+@ IN  SOA nsY.faiY.com. postmaster.nsY.faiY.com. (
+    1 ; Numero de serie à incrémenter après une modification de la zone
+    10800 ; Rafraichissement
+    3600  ; Nouvel essai apres 1 heure
+    604800  ; Obsolescence après 1 semaine
+    86400 ) ; TTL minimale de 1 jour
+  
+      IN    NS    nsY.faiY.com.
+      IN    NS    nsX.faiY.com.
+
+nsY IN  A 192.168.Y.1
+nsX IN  A 192.168.Y.2
+
+------------------------
+
+## Serveur : délégation
+
+sur nsX, on délègue :
+----------------------------
+$ttl 38400
+@ IN  SOA  nsX.faiX.com. postmaster.nsX.faiX.com. (
+    1 ; Numero de serie
+    10800 ; Rafraichissement
+    3600  ; Nouvel essai apres 1 heure
+    604800  ; Obsolescence après 1 semaine
+    86400 ) ; TTL minimale de 1 jour
+  
+      IN    NS    nsX.faiX.com.
+      IN    NS    nsY.faiX.com.
+      
+sous  IN    NS    newns.sous.faiX.com. ; délégation 
+
+nsX   IN    A     192.168.X.1
+nsY   IN    A     192.168.X.2
+
+newns.sous  IN  A  192.168.Y.1 ; ip du serveur de nom de sous.faiX.com
+----------------------------------------
+
+sur nsY
+------------------------
+zone "sous.faiX.com" {
+  type master;
+  file "/etc/bind/db.sous";
+};
+-----------------------
+$ttl 38400
+@ IN  SOA   newns.sous.faiX.com. postmaster.newns.sous.faiX.com. (
+    1 ; Numero de serie
+    10800 ; Rafraichissement
+    3600  ; Nouvel essai apres 1 heure
+    604800  ; Obsolescence après 1 semaine
+    86400 ) ; TTL minimale de 1 jour
+  
+      IN    NS    newns.sous.faiX.com.
+newns IN    A     192.168.Y.1 
+      
+www    IN    A     192.168.X.42 ; par exemple 42, mais n'importe quelle IP est possible
+----------------------------
+

@@ -1,0 +1,83 @@
+@startuml
+hide circle
+'skinparam monochrome true
+skinparam classAttributeIconSize 0
+skinparam backgroundcolor white
+'skinparam groupInheritance 2
+
+package model {
+class Fruit {
+    + nom : String
+    + prix : Double
+    + quantite : Int
+}
+}
+
+package exceptions {
+class FruitDejaPresentException
+
+class ImportFruitsException
+
+ImportFruitsException -[hidden]- FruitDejaPresentException
+
+}
+
+package dao {
+class FruitDAO <<interface >> {
+donneLesFruits() : List<Fruit>
+donneLesFruitsCoutantMoinsQue(prix : Double) : List<Fruit>
+donneLeFruit(nom : String) : Fruit?
+enregistreLesFruits(fruits : List<Fruit>)
+ajouteUnFruit(fruit : Fruit)
+}
+
+class FruitJsonDAO {
+    - fichier : File
+    init(fichier:File)
+    TODO()
+}
+
+class FruitH2DAO {
+    ...
+    init(fullPath:String, table:String)
+    TODO()
+}
+
+class FruitCsvDAO {
+    - fichier : File
+    init(fichier:File)
+    TODO()
+}
+
+class FruitSqliteDAO {
+    ...
+    init(fullPath:String, table:String)
+    TODO()
+}
+
+class FruitMariaDbDAO {
+    ...
+    init(host:String, database:String, user:String, password:String, table:String)
+    TODO()
+}
+
+
+FruitDAO .left.> Fruit : << uses >>
+
+FruitJsonDAO .up.|> FruitDAO : << realizes >>
+FruitH2DAO .up.|> FruitDAO : << realizes >>
+FruitSqliteDAO .up.|> FruitDAO : << realizes >>
+FruitMariaDbDAO .up.|> FruitDAO : << realizes >>
+FruitCsvDAO .up.|> FruitDAO : << realizes >>
+
+FruitSqliteDAO -up[hidden]- FruitH2DAO
+FruitMariaDbDAO -up[hidden]- FruitH2DAO
+
+}
+
+FruitDejaPresentException <.left. FruitDAO::ajouteUnFruit : << throws >>
+ImportFruitsException <.left. FruitDAO : << throws >>
+
+
+
+@enduml

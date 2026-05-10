@@ -1,0 +1,114 @@
+[
+  {
+    "gender": "female",
+    "name": {
+      "title": "Ms",
+      "first": "Lisa",
+      "last": "Johnson"
+    },
+    "location": {
+      "street": {
+        "number": 810,
+        "name": "Park Road"
+      },
+      "city": "Bristol",
+      "state": "Warwickshire",
+      "country": "United Kingdom",
+      "postcode": "MI2 4DS",
+      "coordinates": {
+        "latitude": "-10.4971",
+        "longitude": "-161.9681"
+      },
+      "timezone": {
+        "offset": "-2:00",
+        "description": "Mid-Atlantic"
+      }
+    },
+    "email": "lisa.johnson@example.com",
+    "login": {
+      "uuid": "d8a47ec8-d8f2-4069-bb1e-b7d9b950d9e9",
+      "username": "yellowelephant638",
+      "password": "navy",
+      "salt": "Q8lsDXz5",
+      "md5": "126790594b5f6e825c3021f22613d8d9",
+      "sha1": "61a9a9d35fd990259fda2c61102719d315436b57",
+      "sha256": "77fa62f8b6511f34220af23d42be63c395f5ef503acc106b6dd14ed646ec63e6"
+    },
+    "dob": {
+      "date": "1982-10-10T07:29:57.265Z",
+      "age": 40
+    },
+    "registered": {
+      "date": "2022-04-17T18:08:07.901Z",
+      "age": 0
+    },
+    "phone": "0111 775 6468",
+    "cell": "07453 370672",
+    "id": {
+      "name": "NINO",
+      "value": "RE 35 95 47 G"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/24.jpg",
+      "medium": "https://randomuser.me/api/portraits/med/women/24.jpg",
+      "thumbnail": "https://randomuser.me/api/portraits/thumb/women/24.jpg"
+    },
+    "nat": "GB"
+  },
+  {
+    "gender": "female",
+    "name": {
+      "title": "Miss",
+      "first": "Amanda",
+      "last": "Gomez"
+    },
+    "location": {
+      "street": {
+        "number": 2815,
+        "name": "George Street"
+      },
+      "city": "Cardiff",
+      "state": "Gloucestershire",
+      "country": "United Kingdom",
+      "postcode": "V4 5HW",
+      "coordinates": {
+        "latitude": "-66.9979",
+        "longitude": "159.2839"
+      },
+      "timezone": {
+        "offset": "-4:00",
+        "description": "Atlantic Time (Canada), Caracas, La Paz"
+      }
+    },
+    "email": "amanda.gomez@example.com",
+    "login": {
+      "uuid": "15344326-241f-46ee-a21f-f5e519850afe",
+      "username": "yellowzebra428",
+      "password": "barbara",
+      "salt": "sf9x45li",
+      "md5": "c8518c488e81cb954483f1e014d85554",
+      "sha1": "487ef4cf29010bd9cec86e1bf1a066af2518deee",
+      "sha256": "0a19698690c70f4d57bf7ebbced86bf0bb942ba79b6e1c5b3c288640c7ce57a9"
+    },
+    "dob": {
+      "date": "1996-12-03T08:01:08.465Z",
+      "age": 25
+    },
+    "registered": {
+      "date": "2009-04-28T07:00:54.389Z",
+      "age": 13
+    },
+    "phone": "017687 61592",
+    "cell": "07233 144997",
+    "id": {
+      "name": "NINO",
+      "value": "CL 95 12 63 B"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/6.jpg",
+      "medium": "https://randomuser.me/api/portraits/med/women/6.jpg",
+      "thumbnail": "https://randomuser.me/api/portraits/thumb/women/6.jpg"
+    },
+    "nat": "GB"
+  }
+]

@@ -1,0 +1,41 @@
+@startuml
+hide circle
+skinparam monochrome true
+skinparam classAttributeIconSize 0
+skinparam backgroundcolor white
+skinparam groupInheritance 4
+
+class BoissonChaude <<abstract>> {
+  + suivreRecette(supplément : Boolean) : String
+  <<abstract>> faireBouillir() : String
+  <<abstract>> preparer() : String
+  - verserDansTasse() : String
+  <<abstract>> ajouterSupplement() : String
+}
+
+class BoissonEauChaude <<abstract>> {
+  + faireBouillir() : String
+}
+
+class Cafe {
+  + preparer() : String
+  + ajouterSupplement() : String
+}
+
+class The {
+  + preparer() : String
+  + ajouterSupplement() : String
+}
+
+class Cacao {
+  + faireBouillir()
+  + preparer()
+  + ajouterSupplement()
+}
+
+BoissonEauChaude -up-|> BoissonChaude
+Cacao -up-|> BoissonChaude
+Cafe -up-|> BoissonEauChaude
+The -up-|> BoissonEauChaude
+
+@enduml

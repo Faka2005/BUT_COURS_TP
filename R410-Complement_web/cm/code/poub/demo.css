@@ -1,0 +1,12 @@
+#products {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#products img {
+    width: 100%;
+}
+
+.red {
+    color: red;
+}

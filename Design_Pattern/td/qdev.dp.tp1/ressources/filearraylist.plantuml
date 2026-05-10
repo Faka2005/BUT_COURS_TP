@@ -1,0 +1,67 @@
+@startuml
+hide circle
+'skinparam monochrome true
+skinparam classAttributeIconSize 0
+skinparam backgroundcolor white
+'skinparam groupInheritance 2
+
+class kotlin.collections.Iterable<E> <<interface>>  #aliceblue {
+    iterator() : Iterator<E>
+}
+
+class kotlin.collections.Iterator<E> <<interface>>  #aliceblue {
+    hasNext() : Boolean
+    next() : E
+}
+
+class File<E> <<interface>>  #aliceblue {
+    insererEnQueue(element : E)
+    supprimerEnTete()
+    listerDepuisDebut() : List<E>
+    taille() : Int
+    consulter(position : Int) : E
+    listerDepuisFin() : List<E>
+}
+
+class kotlin.collections.MutableList<E> <<interface>>  #aliceblue {
+...
+}
+
+class kotlin.collections.ArrayList<E>  #aliceblue {
+      ...
+}
+
+
+class FileArrayList<E> {
+    ...
+    <<create>> FileArrayList()
+    insererEnQueue(element : E)
+    supprimerEnTete()
+    listerDepuisDebut() : List<E>
+    taille() : Int
+    consulter(position : Int) : E
+    listerDepuisFin() : List<E>
+    iterator() : Iterator<E>
+  }
+
+FileArrayList "0..*" --> "1\n-list" ArrayList : stocke dans >
+
+
+
+File .up.|> Iterable : <<realizes>>
+Iterable .right.> Iterator : <<uses>>
+
+MutableList .up.|> Iterable : <<realizes>>
+ArrayList .up.|> MutableList : <<realizes>>
+
+FileArrayList .up.|> File : <<realizes>>
+
+
+
+class kotlin.NoSuchElementException  #aliceblue {}
+
+File .up.> NoSuchElementException : <<trows>>
+
+
+
+@enduml

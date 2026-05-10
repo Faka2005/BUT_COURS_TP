@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 01</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/vendor/materializeDesign/css/materialize.css">
+    <link rel="stylesheet" href="assets/vendor/Vuetify/vuetify.min.css">
+
+</head>
+<body>
+<v-app id="app">
+    <v-container fluid>
+        <v-row align="center" justify="center">
+            <v-col cols="10">
+                <div>
+                    <ckeditor @input="onEditorInput" :editor="editor" v-model="editorData"
+                              :config="editorConfig"></ckeditor>
+                </div>
+            </v-col>
+        </v-row>
+    </v-container>
+</v-app>
+<script type="module" src="assets/vendor/VueJS/vue.min.js"></script>
+<script type="module" src="assets/vendor/Vuetify/vuetify.js"></script>
+<script type="module" src="assets/vendor/ckeditor/ckeditor5-build-classic/ckeditor.js"></script>
+<script type="module" src="assets/vendor/ckeditor/ckeditor5-vue/ckeditor.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="module" src="assets/js/chat.js"></script>
+</body>
+</html>

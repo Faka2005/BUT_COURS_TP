@@ -1,0 +1,29 @@
+### findAll
+GET http://localhost:8080/api/v0/user
+### add OK
+POST http://localhost:8080/api/v0/user
+Content-Type: application/json
+
+{
+  "login":  "JoJo",
+  "password":  "1234"
+}
+### add bad body
+POST http://localhost:8080/api/v0/user
+Content-Type: application/json
+
+{
+"login":  "JoJo"
+
+}
+
+### remoce existing user
+DELETE http://localhost:8080/api/v0/user/JoJo
+
+### update bad
+PUT http://localhost:8080/api/v0/user
+Content-Type: application/json
+
+{
+  "login": "JoJo"
+}

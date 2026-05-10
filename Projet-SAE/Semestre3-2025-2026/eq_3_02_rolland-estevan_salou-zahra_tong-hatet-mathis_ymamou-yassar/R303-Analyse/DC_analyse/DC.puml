@@ -1,0 +1,166 @@
+﻿@startuml "DC"
+title Diagramme de classes – Plateforme de vente en ligne
+
+package Utilisateurs {
+@startuml
+Bob -> Alice : hello
+@enduml
+    ' =========================
+    ' ENUMS
+    ' =========================
+
+    enum Role {
+        Admin
+        Client
+    }
+    
+    enum MoyenPaiement {
+        - Carte
+        - PayPal
+    }
+
+
+    ' =========================
+    ' AUTHENTIFICATION
+    ' =========================
+
+    class User {
+        - idUser : int
+        - email : String
+        - login : String
+        - passwordHash : String
+        - actif : bool
+        - role : Role
+        --
+        + isAdmin() : bool
+        + isClient() : bool
+    }
+
+    User ..> Role : <<uses>>
+
+    ' =========================
+    ' METIER ACHAT
+    ' =========================
+
+    class Acheteur {
+        - email : String
+        - adresseLivraison : String
+        - adresseFacturation : String
+        - moyenPaiement : MoyenPaiement
+        --
+        + estAuthentifie() : bool
+        + getIdentite() : String
+    }
+
+    Acheteur ..> MoyenPaiement : <<uses>>
+
+    class SessionAchat {
+        - idSession : int
+        - dateCreation : Date
+        - dateDerniereActivite : Date
+        --
+        + estActive() : bool
+    }
+
+    ' =========================
+    ' ADMINISTRATION
+    ' =========================
+
+    class Admin {
+        --
+        + gererProduits()
+        + gererCommandes()
+        + gererUtilisateurs()
+    }
+
+    ' =========================
+    ' RELATIONS
+    ' =========================
+
+    ' Délégation d'identité
+    Acheteur "0..1" --> User : delegueIdentite
+
+    ' Composition transactionnelle
+    SessionAchat "1" *-- "1" Acheteur : contient
+
+    ' Rôle applicatif
+    Admin --> User : utilise
+}
+
+
+
+
+package Produits {
+
+    class Produit {
+        - idProduit : int
+        - nom : String
+        - prix : double
+        - description : String
+        - niveauPrestige 'niveau sur 5
+        - notationProduit
+        - taille
+        - quantiteRestante
+    }
+
+    class Avis {
+        - titre
+        - contenue
+        - date
+    }
+
+    Acheteur "0..*" --> "1" Avis : redige
+    Produit "1" --> "0..*" Avis : a
+
+    
+    
+
+}
+
+
+
+package Commandes {
+
+    class Panier {
+        - idPanier : int
+    }
+    
+
+    class LignePanier {
+        - quantite : int
+    }
+
+    class Commande {
+        - idCommande : int
+        - date : Date
+    }
+    Commande "0..*" --> "1" StatutCommande : statut
+
+
+    class LigneCommande {
+        - quantite : int
+        - prixUnitaire : double
+    }
+    
+    enum StatutCommande {
+        Brouillon
+        EnAttentePaiement
+        Payee
+        Expediee
+        Annulee
+    }
+
+
+    ' Relations internes
+    Panier "1" *-- "0..*" LignePanier : contient
+    LignePanier "0..*" --> "1" Produit : concerne
+
+    Commande "1" *-- "1..*" LigneCommande : contient
+    LigneCommande "0..*" --> "1" Produit : concerne
+}
+
+Acheteur "1" --> "1" Panier : possède
+Acheteur "0..*" --> "1" Commande : effectue
+
+@enduml
+

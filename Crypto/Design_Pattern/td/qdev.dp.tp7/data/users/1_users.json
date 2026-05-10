@@ -1,0 +1,58 @@
+[
+  {
+    "gender": "male",
+    "name": {
+      "title": "Mr",
+      "first": "Rafael",
+      "last": "Gordon"
+    },
+    "location": {
+      "street": {
+        "number": 9558,
+        "name": "Oak Lawn Ave"
+      },
+      "city": "Wagga Wagga",
+      "state": "Tasmania",
+      "country": "Australia",
+      "postcode": 7740,
+      "coordinates": {
+        "latitude": "-89.5265",
+        "longitude": "-117.4118"
+      },
+      "timezone": {
+        "offset": "-5:00",
+        "description": "Eastern Time (US & Canada), Bogota, Lima"
+      }
+    },
+    "email": "rafael.gordon@example.com",
+    "login": {
+      "uuid": "c53f9ea6-91f9-45f0-814d-817224b3e906",
+      "username": "crazysnake563",
+      "password": "arsenal",
+      "salt": "Jg9Kw8aH",
+      "md5": "da21891f8ddf4119b2194e9fe22eb46b",
+      "sha1": "363c337abd732c716c6cd53b50ee4d84f8640021",
+      "sha256": "14be4a5579dd19a247dabe4e9459fa529029e21b049a676e18bfcd806e5c187b"
+    },
+    "dob": {
+      "date": "1949-11-09T03:37:35.452Z",
+      "age": 72
+    },
+    "registered": {
+      "date": "2011-11-22T01:51:44.964Z",
+      "age": 10
+    },
+    "phone": "01-2729-5031",
+    "cell": "0419-023-935",
+    "id": {
+      "name": "TFN",
+      "value": "116195608"
+    },
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/men/12.jpg",
+      "medium": "https://randomuser.me/api/portraits/med/men/12.jpg",
+      "thumbnail": "https://randomuser.me/api/portraits/thumb/men/12.jpg"
+    },
+    "nat": "GB"
+  }
+]

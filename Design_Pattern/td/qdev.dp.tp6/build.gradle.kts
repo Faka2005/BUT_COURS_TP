@@ -1,0 +1,33 @@
+plugins {
+    kotlin("jvm") version "2.1.10"
+}
+
+group = "iut.info.but2"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    maven {
+        url = uri("http://nexus.dep-info.iut-nantes.univ-nantes.prive/repository/public/")
+        isAllowInsecureProtocol = true
+    }
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter:5.11.4")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.11.4")
+    testImplementation(kotlin("reflect"))
+    testImplementation("net.sourceforge.plantuml:plantuml:1.2025.2")
+    testImplementation("org.slf4j:slf4j-api:2.0.9")
+    testImplementation("ch.qos.logback:logback-classic:1.5.20") {
+        exclude(group = "org.glassfish", module = "jakarta.el")
+    }
+    testImplementation(files("libs/univ.nantes.umlchecker-2.2.1.jar"))
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(21)
+}

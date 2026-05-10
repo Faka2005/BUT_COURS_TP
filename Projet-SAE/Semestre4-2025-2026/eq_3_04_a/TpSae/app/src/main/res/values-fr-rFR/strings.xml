@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TpSae</string>
+    <string name="search_placeholder">Rechercher un film...</string>
+    <string name="filter_btn_open">Filtres et Genres</string>
+    <string name="filter_btn_close">Fermer les filtres</string>
+    <string name="sort_by_label">Trier par :</string>
+    <string name="genres_label">Genres :</string>
+    <string name="category_label">Categorie :</string>
+    <string name="sort_popular">Populaires</string>
+    <string name="sort_top_rated">Mieux notés</string>
+    <string name="sort_latest">Nouveautés</string>
+    <string name="details_back">Retour</string>
+    <string name="titre_home">Decouvrez</string>
+    <string name="soustitre_home_films">Films</string>
+    <string name="soustitre_home_serie">Series</string>
+    <string name="no_synopsis">Aucun synopsis disponible.</string>
+    <string name="quizz_title">Le Ciné-Quizz</string>
+    <string name="quizz_q1">1. Que cherches-tu ?</string>
+    <string name="quizz_q2">2. Note minimale : %1$d/10</string>
+    <string name="quizz_q3">3. Ambiance ?</string>
+    <string name="quizz_q4">4. Quel genre ?</string>
+    <string name="quizz_type_all">Tous</string>
+    <string name="quizz_pop_blockbuster">Blockbusters</string>
+    <string name="quizz_pop_hidden">Pépites cachées</string>
+    <string name="quizz_pop_any">Peu importe</string>
+    <string name="quizz_btn_launch">Découvrir</string>
+    <string name="quizz_btn_reroll">Relancer</string>
+    <string name="quizz_results">Résultats :</string>
+    <string name="quizz_no_results">Aucun résultat correspondant...</string>
+</resources>

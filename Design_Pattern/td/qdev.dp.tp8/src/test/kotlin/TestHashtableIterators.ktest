@@ -1,0 +1,81 @@
+
+import hashtables.Hashtable
+import hashtables.HashtableA
+import hashtables.SimpleHashtable
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
+
+
+class TestHashtableIterators {
+
+    private lateinit var table : HashtableA<Int>
+
+    @Test
+    fun testSimpleHashtableIterator() {
+        table = SimpleHashtable(5, { e -> e })
+        assertAll(
+            { assertTrue(table.add((1))) },
+            { assertTrue(table.add((5))) },
+            { assertTrue(table.add((9))) },
+            { assertTrue(table.add((7))) },
+        )
+
+        var ite = table.iterator()
+        var boucle1 = 0
+        while (ite.hasNext()) {
+            val element = ite.next()
+            boucle1 += element
+        }
+
+        var boucle2 = 0
+        for (element in table) {
+            boucle2 += element
+        }
+        assertTrue(1+5+7+9 == boucle1)
+        assertTrue(boucle1 == boucle2)
+
+        val attendu = listOf((5),(1),(7),(9))
+        assertIterableEquals(attendu, table)
+        assertAll(
+            {  assertTrue((1) in table) },
+            {  assertTrue((5) in table) },
+            {  assertTrue((7) in table) },
+            {  assertTrue((9) in table) }
+        )
+    }
+
+    @Test
+    fun testHashTableIterator() {
+        table = Hashtable(5, { e -> e })
+        assertAll(
+            { assertTrue(table.add((1))) },
+            { assertTrue(table.add((5))) },
+            { assertTrue(table.add((9))) },
+            { assertTrue(table.add((7))) },
+        )
+
+        var ite = table.iterator()
+        var boucle1 = 0
+        while (ite.hasNext()) {
+            val element = ite.next()
+            boucle1 += element
+        }
+
+        var boucle2 = 0
+        for (element in table) {
+            boucle2 += element
+        }
+        assertTrue(1+5+7+9 == boucle1)
+        assertTrue(boucle1 == boucle2)
+
+        val attendu = listOf((5),(1),(7),(9))
+        assertIterableEquals(attendu, table)
+        assertAll(
+            {  assertTrue((1) in table) },
+            {  assertTrue((5) in table) },
+            {  assertTrue((7) in table) },
+            {  assertTrue((9) in table) }
+        )
+    }
+}

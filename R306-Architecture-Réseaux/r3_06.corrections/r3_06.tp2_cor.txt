@@ -1,0 +1,100 @@
+# Td Architecture des réseaux : Firewall
+
+* scanner la machine serveur :
+
+```
+nmap 192.168.0.254
+nmap -A -T4 192.168.0.254
+```
+
+* à quoi servent les options `-n` `-A` et `-T4` ?
+
+* si besoin, il est possible de rendre nmap plus bavard avec les options `-v`et `-vv`
+
+* découvrir les hôtes présents sur votre réseau
+
+```
+nmap 192.168.Y.1-254
+```
+
+* quels serveurs sont actifs sur l'hôte repéré (vous pouvez étendre la plage de ports testés) ?
+
+```
+nmap -T4 -p1-1023 192.168.X.Z
+```
+
+* déterminez pour chaque port ouvert, le service correspondant et sa version
+
+```
+nmap -sV -T4 -p1-1023 192.168.Y.Z
+```
+
+* déterminez le système d'exploitation de la machine hôte
+
+```
+nmap -O -T4 192.168.Y.Z
+```
+
+* testez plusieurs techniques de scans de ports (options : `-sS/sT/sA/sM/sN/sF/sX`) sur votre propre machine en limitant
+  le nombre de ports testés. Capturez et observez la couche transport
+  (l'utilisation faite des flags)
+
+* êtes-vous capable de (re)trouver le service udp ouvert sur la machine `192.168.0.254` ?
+nmap -sU -p 1-1023 192.168.0.254
+
+* On épure la configuration 
+# iptables -F
+# iptables -X
+
+* La politique de sécurité classique est de bloquer tout le trafic et de rouvrir seulement ce qui est utile. C'est ce que nous allons faire. Tout bloquer par défaut : 
+
+# iptables -P INPUT DROP
+# iptables -P OUTPUT DROP
+# iptables -P FORWARD DROP
+
+
+*  Autorisez le trafic depuis notre machine vers elle-même (`localhost`)
+  par son interface d’entrée (cette interface d’entrée ne s'appelle **pas** `localhost`).
+
+# iptables -A INPUT -i lo -j ACCEPT
+# iptables -A OUTPUT -o lo -j ACCEPT
+
+* Autoriser le dialogue dns vers le serveur DNS. Tester.
+iptables -A OUTPUT -o jaune -p udp -d 192.168.0.254 --dport 53 -j ACCEPT
+iptables -A INPUT -i jaune -p udp -s 192.168.0.254 --sport 53 -j ACCEPT
+penser que le serveur répond on peut tester avec :
+host nsX.tp.com
+
+
+- Testez un dialogue http vers un serveur web de la salle. Par exemple :
+wget --no-proxy http://192.168.0.254
+marche pas
+
+- Autorisez ce dialogue http (tcp, port 80) en sortie. Testez.
+
+iptables -A OUTPUT -o jaune -p tcp --dport 80 -j ACCEPT
+iptables -A INPUT -i jaune -p tcp --sport 80 -j ACCEPT
+penser que le serveur répond
+
+Tester.
+wget --no-proxy http://192.168.0.254
+marche
+
+Tout va bien ?
+Non ! cf suite.
+* Utiliser l'option -g 80 avec nmap depuis une autre station pour scanner votre machine. Que constate-t-on ?
+-g -> utilisation de 80 comme numéro de port source -> on se fait passer pour un serveur web
+
+=> on arrive à scanner la machine...
+
+# modprobe ip_conntrack
+
+Avec ce module, on peut établir de nouvelles règles : 
+
+# iptables -A OUTPUT -o jaune  -m state ! --state INVALID -j ACCEPT
+# iptables -A INPUT -i jaune -m state --state ESTABLISHED -j ACCEPT
+
+
+* Vérifier que la situation s'est améliorée.
+nmap...
+

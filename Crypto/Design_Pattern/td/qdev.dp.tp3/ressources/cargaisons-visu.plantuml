@@ -1,0 +1,156 @@
+@startuml
+hide circle
+skinparam monochrome true
+skinparam classAttributeIconSize 0
+skinparam backgroundcolor white
+skinparam groupInheritance 4
+
+
+hide circle
+skinparam monochrome true
+skinparam classAttributeIconSize 0
+skinparam backgroundcolor white
+'skinparam groupInheritance 2
+
+together {
+class Marchandise {
+    - poids : Double
+    - volume : Double
+    + <<create>> Marchandise(poids : Double, volume : Double)
+    + donneVolume() : Double
+    + donnePoids() : Double
+}
+
+
+enum CARGAISON <<enumeration>> {
+    + limite : Double
+    + facteur : Int
+    + {static} FLUVIALE(300'000, 1)
+    + {static} ROUTIERE(38'000, 4)
+    + {static} AERIENNE(80'000, 10)
+    <<create>> CARGAISON(limite : Double, facteur : Int)
+}
+}
+
+class UrgentImpossibleException {
+
+}
+
+
+CARGAISON -left[hidden]- Marchandise
+Marchandise -down[hidden]- UrgentImpossibleException 
+
+
+class Cargaison <<abstract>> {
+    - distance : Int
+    - encombrementActuel : Double = 0.0
+    # <<create>> Cargaison(distance : Int)
+    + ajouter(marchandise : Marchandise) : Boolean
+    + rechercher(marchandise : Marchandise) : Int
+    + cout() : Double
+    # <<abstract>> limite() : Double
+    # facteur() : Int
+    # encombrement(marchandise : Marchandise) : Double
+    + {static} donne(distance : Int, type : CARGAISON, urgente : Boolean = false) : Cargaison
+}
+
+
+note right of Cargaison 
+marchandises : 
+  MutableList<Marchandise>
+end note
+
+CARGAISON <.down. Cargaison : << uses >>
+
+UrgentImpossibleException <.down. Cargaison::donne : << throws >>
+
+note left of Cargaison::ajouter
+if ( encombrementActuel
+     + encombrement(marchandise)
+     <= limite() ) 
+ ...
+end note
+
+note left of Cargaison::cout 
+encombrementActuel
+x distance x facteur() 
+end note
+
+note left of  Cargaison::facteur
+FLUVIALE.facteur 
+end note
+
+note left of Cargaison::"encombrement(marchandise : Marchandise)"
+ marchandise.donnePoids() 
+end note
+
+
+class CargaisonFluviale {
+    + <<create>> CargaisonFluviale(distance : Int)
+    # limite() : Double
+}
+
+class CargaisonRoutiere {
+    + <<create>> CargaisonRoutiere(distance : Int)
+    # limite() : Double
+    # facteur() : Int
+}
+
+
+note left of CargaisonFluviale::limite
+FLUVIALE.limite
+end note
+
+CargaisonFluviale -up-|> Cargaison
+
+CargaisonFluviale -down[hidden]- CargaisonRoutiere
+
+note left of CargaisonRoutiere::limite
+ROUTIERE.limite
+end note
+
+note left of CargaisonRoutiere::facteur
+ROUTIERE.facteur
+end note
+
+CargaisonRoutiere -up-|> Cargaison
+
+class CargaisonAerienne {
+    + <<create>> CargaisonAerienne(distance : Int)
+    # limite() : Double
+    # facteur() : Int
+    # encombrement(marchandise : Marchandise) : Double
+}
+
+note left of CargaisonAerienne::limite
+AERIENNE.limite
+end note
+
+note left of CargaisonAerienne::facteur
+AERIENNE.facteur
+end note
+
+note left of CargaisonAerienne::encombrement
+ marchandise.donneVolume()
+end note
+
+CargaisonAerienne -up-|> Cargaison
+CargaisonAerienne -up[hidden]- CargaisonRoutiere
+
+class CargaisonAerienneUrgente {
+    + <<create>> CargaisonAerienneUrgente(distance : Int)
+    # facteur() : Int
+}
+
+note left of CargaisonAerienneUrgente::facteur
+2 x super.facteur()
+end note
+
+CargaisonAerienneUrgente -up-|> CargaisonAerienne
+
+
+Marchandise "0..100\n-marchandises\t" <-- "0..1" Cargaison : contient <
+
+Marchandise -[hidden]- CargaisonRoutiere
+
+@enduml

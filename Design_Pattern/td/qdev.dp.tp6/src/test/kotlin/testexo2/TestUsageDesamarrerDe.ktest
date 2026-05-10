@@ -1,0 +1,193 @@
+package testexo2
+
+import exo2.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+
+class TestUsageDesamarrerDe {
+
+    private lateinit var spatioport: Spatioport
+
+    @BeforeEach
+    fun setUp() {
+        spatioport = Spatioport(10)
+    }
+
+    @Test
+    fun `desamarrerDe retourne le vaisseau amarré et libère la place`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerA(vaisseau, 3)
+
+        val vaisseauDesamarre = spatioport.desamarrerDe(3)
+
+        assertEquals(vaisseau, vaisseauDesamarre)
+        assertEquals(-1, spatioport.estAmarreA(vaisseau))
+        assertEquals(10, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `desamarrerDe sur la première place`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerA(vaisseau, 0)
+
+        val vaisseauDesamarre = spatioport.desamarrerDe(0)
+
+        assertEquals(vaisseau, vaisseauDesamarre)
+    }
+
+    @Test
+    fun `desamarrerDe sur la dernière place`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerA(vaisseau, 9)
+
+        val vaisseauDesamarre = spatioport.desamarrerDe(9)
+
+        assertEquals(vaisseau, vaisseauDesamarre)
+    }
+
+    @Test
+    fun `desamarrerDe avec place inexistante négative lève PlaceInexistanteException`() {
+        assertThrows<PlaceInexistanteException> {
+            spatioport.desamarrerDe(-1)
+        }
+    }
+
+    @Test
+    fun `desamarrerDe avec place inexistante supérieure au maximum lève PlaceInexistanteException`() {
+        assertThrows<PlaceInexistanteException> {
+            spatioport.desamarrerDe(10)
+        }
+    }
+
+    @Test
+    fun `desamarrerDe sur place libre lève PlaceLibreException`() {
+        val exception = assertThrows<PlaceLibreException> {
+            spatioport.desamarrerDe(0)
+        }
+        assertEquals("Aucun vaisseau n'est amarré à la place 0.", exception.message)
+    }
+
+    @Test
+    fun `desamarrerDe sur place inutilisable lève PlaceInutilisableException`() {
+        spatioport.emplacementInutilisable(5)
+
+        assertThrows<PlaceInutilisableException> {
+            spatioport.desamarrerDe(5)
+        }
+    }
+
+    @Test
+    fun `desamarrerDe plusieurs vaisseaux de différentes places`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrerA(v1, 2)
+        spatioport.amarrerA(v2, 5)
+        spatioport.amarrerA(v3, 8)
+
+        val desamarre1 = spatioport.desamarrerDe(2)
+        val desamarre2 = spatioport.desamarrerDe(8)
+
+        assertEquals(v1, desamarre1)
+        assertEquals(v3, desamarre2)
+        assertEquals(5, spatioport.estAmarreA(v2))
+        assertEquals(1, spatioport.nbPlacesOccupees())
+    }
+
+    @Test
+    fun `desamarrerDe met à jour le nombre de places libres`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerA(vaisseau, 4)
+        val placesLibresAvant = spatioport.nbPlacesLibres()
+
+        spatioport.desamarrerDe(4)
+
+        assertEquals(placesLibresAvant + 1, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `desamarrerDe met à jour le tonnage total`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerA(vaisseau, 6)
+        val tonnageAvant = spatioport.tonnagesTotalAmarres()
+
+        spatioport.desamarrerDe(6)
+
+        assertEquals(tonnageAvant - vaisseau.type.tonnage, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `desamarrerDe permet de réamarrer un vaisseau à la même place`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrerA(v1, 3)
+        val vaisseauDesamarre = spatioport.desamarrerDe(3)
+        spatioport.amarrerA(v2, 3)
+
+        assertEquals(v1, vaisseauDesamarre)
+        assertEquals(3, spatioport.estAmarreA(v2))
+    }
+
+    @Test
+    fun `desamarrerDe sur place déjà désamarrée lève PlaceLibreException`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerA(vaisseau, 7)
+        spatioport.desamarrerDe(7)
+
+        assertThrows<PlaceLibreException> {
+            spatioport.desamarrerDe(7)
+        }
+    }
+
+    @Test
+    fun `desamarrerDe retourne le bon type de vaisseau`() {
+        val cargo = Vaisseau("Cargo", TypeVaisseau.CARGO)
+        val chasseur = Vaisseau("Chasseur", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrerA(cargo, 1)
+        spatioport.amarrerA(chasseur, 4)
+
+        val desamarre1 = spatioport.desamarrerDe(1)
+        val desamarre2 = spatioport.desamarrerDe(4)
+
+        assertEquals(TypeVaisseau.CARGO, desamarre1.type)
+        assertEquals(TypeVaisseau.CHASSEUR, desamarre2.type)
+    }
+
+    @Test
+    fun `desamarrerDe maintient la cohérence des compteurs`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+
+        spatioport.emplacementInutilisable(5)
+        spatioport.amarrerA(v1, 2)
+        spatioport.amarrerA(v2, 7)
+
+        spatioport.desamarrerDe(2)
+
+        val total = spatioport.nbPlacesLibres() +
+                spatioport.nbPlacesOccupees() +
+                spatioport.nbPlacesInutilisables()
+        assertEquals(spatioport.nbPlacesTotales(), total)
+    }
+
+    @Test
+    fun `desamarrerDe avec places non contiguës`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrerA(v1, 1)
+        spatioport.amarrerA(v2, 4)
+        spatioport.amarrerA(v3, 9)
+
+        val desamarre = spatioport.desamarrerDe(4)
+
+        assertEquals(v2, desamarre)
+        assertEquals(2, spatioport.nbPlacesOccupees())
+    }
+}

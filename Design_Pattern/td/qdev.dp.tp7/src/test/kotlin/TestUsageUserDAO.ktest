@@ -1,0 +1,140 @@
+import netprime.datalayer.UserDAO
+import netprime.datalayer.datamodel.users.*
+import netprime.datalayer.iUserDAO
+import netprime.exceptions.JsonParserException
+import netprime.exceptions.UserException
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import java.io.FileNotFoundException
+
+class TestUsageUserDAO {
+
+    lateinit var users: MutableSet<User>
+    lateinit var userDAO: iUserDAO
+
+    @BeforeEach
+    fun reinit() {
+        users = mutableSetOf()
+        userDAO = UserDAO(users)
+    }
+
+    @Test
+    fun test0user() {
+        assertEquals(0, users.size)
+    }
+
+    @Test
+    fun testFileNotFoundExceptionUser() {
+        assertThrows<FileNotFoundException> { userDAO.addFrom("data/users/XXX.json") }
+    }
+
+    @Test
+    fun testJSonParserExceptionUser() {
+        assertThrows<JsonParserException> { userDAO.addFrom("data/series/4_series.json") }
+    }
+
+    @Test
+    fun testJSonParserExceptionYuser() {
+        assertThrows<JsonParserException> { userDAO.addFrom("data/movies/IMDb.md") }
+    }
+
+    @Test
+    fun test1user() {
+        userDAO.addFrom("data/users/1_users.json")
+        assertEquals(1, users.size)
+    }
+
+    @Test
+    fun test3user() {
+        userDAO.addFrom("data/users/1_users.json")
+        assertEquals(1, users.size)
+        userDAO.addFrom("data/users/2_users.json")
+        assertEquals(3, users.size)
+    }
+
+    @Test
+    fun test4userWithDoublon() {
+        assertThrows<UserException> { userDAO.addFrom("data/users/4_users_with2same.json") }
+    }
+
+    @Test
+    fun test82user() {
+        userDAO.addFrom("data/users/2_users.json")
+        userDAO.addFrom("data/users/80_users.json")
+        assertEquals(82, users.size)
+    }
+
+
+    @Test
+    fun test83user() {
+        userDAO.addFrom("data/users/1_users.json")
+        userDAO.addFrom("data/users/2_users.json")
+        assertThrows<UserException> { userDAO.addFrom("data/users/80_users.json") }
+    }
+
+
+    @Test
+    fun testList2User() {
+        val amanda = User(
+            GENDER.female,
+            Name("Amanda", "Gomez"),
+            "amanda.gomez@example.com",
+            Login("yellowzebra428", "barbara"),
+            NAT.GB
+        )
+
+        val lisa = User(
+            GENDER.female,
+            Name("Lisa", "Johnson"),
+            "lisa.johnson@example.com",
+            Login("yellowelephant638", "navy"),
+            NAT.GB
+        )
+        userDAO.addFrom("data/users/2_users.json")
+
+        assertTrue(users.contains(amanda))
+        assertTrue(users.contains(lisa))
+    }
+
+    @Test
+    fun testContains1user() {
+        val consideredUser = User(
+            GENDER.male,
+            Name("Rafael", "Gordon"),
+            "rafael.gordon@example.com",
+            Login("crazysnake563", "arsenal"),
+            NAT.GB
+        )
+        userDAO.addFrom("data/users/1_users.json")
+        assertTrue(users.contains(consideredUser))
+        assertEquals(consideredUser, users.first())
+    }
+
+    @Test
+    fun testContains80user() {
+        val consideredUser = User(
+            GENDER.male,
+            Name("Rafael", "Gordon"),
+            "rafael.gordon@example.com",
+            Login("crazysnake563", "arsenal"),
+            NAT.GB
+        )
+        userDAO.addFrom("data/users/80_users.json")
+        assertTrue(users.contains(consideredUser))
+    }
+
+    @Test
+    fun testContains2user() {
+        val consideredUser = User(
+            GENDER.male,
+            Name("Rafael", "Gordon"),
+            "rafael.gordon@example.com",
+            Login("crazysnake563", "arsenal"),
+            NAT.GB
+        )
+        userDAO.addFrom("data/users/2_users.json")
+        assertFalse(users.contains(consideredUser))
+    }
+}

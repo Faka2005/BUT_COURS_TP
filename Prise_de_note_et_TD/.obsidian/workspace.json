@@ -1,0 +1,250 @@
+{
+  "main": {
+    "id": "b8af0cc3340c4337",
+    "type": "split",
+    "children": [
+      {
+        "id": "1e76d35462c3a0f2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "38361fd2b1ad95b4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "R402-Conception_de_tests/TD5.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "TD5"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3dfed493fe52aeed",
+    "type": "split",
+    "children": [
+      {
+        "id": "995eef84c2597741",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "feca6713f71fbebd",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorateur de fichiers"
+            }
+          },
+          {
+            "id": "bdbe463ba86cfb5c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "1️⃣",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Rechercher"
+            }
+          },
+          {
+            "id": "7fcce3a57071a458",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Signets"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 332.51103591918945
+  },
+  "right": {
+    "id": "2ba1e3b7d7fc62c5",
+    "type": "split",
+    "children": [
+      {
+        "id": "18a0b3e228b478c3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d07dcdb9b8633f76",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "R412-Langages et Automates/TD.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Rétrolien pour TD"
+            }
+          },
+          {
+            "id": "40e25c5f428355e7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Rendue ERP.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Liens sortants de Rendue ERP"
+            }
+          },
+          {
+            "id": "be2566c74a95a41c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Mots-clés"
+            }
+          },
+          {
+            "id": "f1dc031443d18664",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Toutes les propriétés"
+            }
+          },
+          {
+            "id": "288a9ac31d706780",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "R412-Langages et Automates/TD.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Plan de TD"
+            }
+          },
+          {
+            "id": "7006fe941db0ab15",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Créer une nouvelle base": false,
+      "switcher:Ouvrir le sélecteur rapide": false,
+      "graph:Ouvrir la vue graphique": false,
+      "canvas:Créer une nouvelle toile": false,
+      "daily-notes:Ouvrir la note quotidienne": false,
+      "templates:Insérer le modèle": false,
+      "command-palette:Ouvrir la palette de commandes": false,
+      "card-note:Search Notes": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-importer:Open Importer": false,
+      "templater-obsidian:Templater": false
+    }
+  },
+  "active": "38361fd2b1ad95b4",
+  "lastOpenFiles": [
+    "Rendue ERP.md",
+    "R409 -Management avancé des systèmes d'information/TD3.md",
+    "R412-Langages et Automates/TD.md",
+    "R409 -Management avancé des systèmes d'information/TD1.md",
+    "Révisions.md",
+    "Pasted image 20260211105449.png",
+    "Pasted image 20260211104844.png",
+    "Pasted image 20260211104624.png",
+    "Pasted image 20260211104330.png",
+    "Pasted image 20260203145321.png",
+    "Pasted image 20260203143302.png",
+    "Pasted image 20260130155738.png",
+    "Pasted image 20260130153929.png",
+    "Pasted image 20260128103914.png",
+    "Pasted image 20260128103936.png",
+    "Drawing 2026-02-03 14.33.48.excalidraw.md",
+    "Qualité_et_au-delà_du_relationnel/TD1.md",
+    "Qualité_et_au-delà_du_relationnel/TD4.md",
+    "Qualité_et_au-delà_du_relationnel/TD3.md",
+    "R402-Conception_de_tests/TD5.md",
+    "Excalidraw/Drawing 2026-02-11 10.41.52.excalidraw.md",
+    "Excalidraw/Drawing 2026-02-11 10.22.53.excalidraw.md",
+    "R402-Conception_de_tests/TD4.md",
+    "R409 -Management avancé des systèmes d'information",
+    "TD4.md",
+    "Qualité_et_au-delà_du_relationnel/TD2-MongoDB.md",
+    "Excalidraw/Drawing 2026-02-06 11.19.04.excalidraw.md",
+    "Excalidraw/Drawing 2026-02-04 15.59.25.excalidraw.md",
+    "Excalidraw/Drawing 2026-02-03 14.45.13.excalidraw.md",
+    "Excalidraw/Drawing 2026-02-04 15.56.29.excalidraw.md",
+    "Excalidraw/Drawing 2026-02-03 14.19.01.excalidraw.md",
+    "Excalidraw/Graphe_de_flot_de_contrôle_addMin.excalidraw.md",
+    "Excalidraw/Graphe_de_flot_de_contrôle_contructeur_BasicAlarmClock.excalidraw.md",
+    "Excalidraw/Graphe_de_flot_de_contrôle_selectRing.excalidraw.md",
+    "Excalidraw/Drawing 2026-02-03 13.41.07.excalidraw.md",
+    "Excalidraw/Drawing 2026-01-30 15.44.34.excalidraw.md",
+    "Qualité_et_au-delà_du_relationnel",
+    "excalidraw 26-01-28 12.35.56.ex",
+    "Excalidraw",
+    "excalidraw 26-01-28 12.36.51.ex",
+    "Sans titre.base",
+    "R411 - Développement pour applications mobiles",
+    "Sans titre.canvas",
+    "R402-Conception_de_tests",
+    "R412-Langages et Automates"
+  ]
+}

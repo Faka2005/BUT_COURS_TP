@@ -1,0 +1,101 @@
+package testexo2
+
+import exo2.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+
+
+class TestUsageAmarrerVaisseau {
+
+    private lateinit var spatioport: Spatioport
+
+    @BeforeEach
+    fun setUp() {
+        spatioport = Spatioport(5)
+    }
+
+    @Test
+    fun `amarrer un vaisseau dans un spatioport vide`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+        assertEquals(0, spatioport.estAmarreA(vaisseau))
+        assertEquals(1, spatioport.nbPlacesOccupees())
+        assertEquals(4, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `amarrer plusieurs vaisseaux dans l'ordre des places`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        spatioport.amarrer(v3)
+
+        assertEquals(0, spatioport.estAmarreA(v1))
+        assertEquals(1, spatioport.estAmarreA(v2))
+        assertEquals(2, spatioport.estAmarreA(v3))
+        assertEquals(3, spatioport.nbPlacesOccupees())
+    }
+
+    @Test
+    fun `amarrer un vaisseau déjà amarré lève VaisseauDejaAmarreException`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+
+        assertThrows<VaisseauDejaAmarreException> {
+            spatioport.amarrer(vaisseau)
+        }
+    }
+
+    @Test
+    fun `amarrer dans un spatioport plein lève SpatioportPleinException`() {
+        val vaisseaux = List(5) { Vaisseau("V$it", TypeVaisseau.CARGO) }
+        vaisseaux.forEach { spatioport.amarrer(it) }
+
+        val nouveauVaisseau = Vaisseau("V6", TypeVaisseau.CHASSEUR)
+        assertThrows<SpatioportPleinException> {
+            spatioport.amarrer(nouveauVaisseau)
+        }
+    }
+
+    @Test
+    fun `amarrer un vaisseau après avoir rendu des places inutilisables`() {
+        spatioport.emplacementInutilisable(0)
+        spatioport.emplacementInutilisable(1)
+
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+
+        assertEquals(2, spatioport.estAmarreA(vaisseau))
+        assertEquals(2, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `amarrer saute les places inutilisables et occupe la première place libre`() {
+        spatioport.emplacementInutilisable(0)
+        spatioport.emplacementInutilisable(2)
+
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+
+        assertEquals(2, spatioport.nbPlacesOccupees())
+        assertEquals(1, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `amarrer dans un spatioport avec toutes les places inutilisables lève SpatioportPleinException`() {
+        repeat(5) { spatioport.emplacementInutilisable(it) }
+
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        assertThrows<SpatioportPleinException> {
+            spatioport.amarrer(vaisseau)
+        }
+    }
+}

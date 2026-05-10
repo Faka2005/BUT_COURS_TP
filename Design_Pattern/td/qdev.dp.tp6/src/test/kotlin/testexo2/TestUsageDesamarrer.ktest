@@ -1,0 +1,151 @@
+package testexo2
+
+import exo2.PlaceLibreException
+import exo2.Spatioport
+import exo2.TypeVaisseau
+import exo2.Vaisseau
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotEquals
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+
+class TestUsageDesamarrer {
+
+    private lateinit var spatioport: Spatioport
+
+    @BeforeEach
+    fun setUp() {
+        spatioport = Spatioport(10)
+    }
+
+    @Test
+    fun `desamarrer un vaisseau amarré libère sa place`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+        spatioport.desamarrer(vaisseau)
+
+        assertEquals(-1, spatioport.estAmarreA(vaisseau))
+        assertEquals(10, spatioport.nbPlacesLibres())
+        assertEquals(0, spatioport.nbPlacesOccupees())
+    }
+
+    @Test
+    fun `desamarrer plusieurs vaisseaux`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        spatioport.amarrer(v3)
+
+        spatioport.desamarrer(v1)
+        spatioport.desamarrer(v2)
+
+        assertEquals(-1, spatioport.estAmarreA(v1))
+        assertEquals(-1, spatioport.estAmarreA(v2))
+        assertEquals(2, spatioport.estAmarreA(v3))
+        assertEquals(1, spatioport.nbPlacesOccupees())
+    }
+
+    @Test
+    fun `desamarrer un vaisseau non amarré lève PlaceLibreException`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+
+        val exception = assertThrows<PlaceLibreException> {
+            spatioport.desamarrer(vaisseau)
+        }
+        assertEquals("Le vaisseau n'est pas amarré au spatioport.", exception.message)
+    }
+
+    @Test
+    fun `desamarrer un vaisseau déjà désamarré lève PlaceLibreException`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+        spatioport.desamarrer(vaisseau)
+
+        assertThrows<PlaceLibreException> {
+            spatioport.desamarrer(vaisseau)
+        }
+    }
+
+    @Test
+    fun `desamarrer ne touche pas aux autres vaisseaux amarrés`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        spatioport.amarrer(v3)
+
+        spatioport.desamarrer(v2)
+
+        assertEquals(0, spatioport.estAmarreA(v1))
+        assertEquals(2, spatioport.estAmarreA(v3))
+        assertEquals(2, spatioport.nbPlacesOccupees())
+    }
+
+    @Test
+    fun `desamarrer permet de réamarrer le même vaisseau`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+        spatioport.desamarrer(vaisseau)
+        spatioport.amarrer(vaisseau)
+
+        assertNotEquals(-1, spatioport.estAmarreA(vaisseau))
+        assertEquals(1, spatioport.nbPlacesOccupees())
+    }
+
+    @Test
+    fun `desamarrer d'une place spécifique libère cette place`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerA(vaisseau, 5)
+        spatioport.desamarrer(vaisseau)
+
+        assertEquals(-1, spatioport.estAmarreA(vaisseau))
+        assertEquals(10, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `desamarrer tous les vaisseaux d'un spatioport plein`() {
+        val vaisseaux = List(10) { Vaisseau("V$it", TypeVaisseau.CARGO) }
+        vaisseaux.forEach { spatioport.amarrer(it) }
+        vaisseaux.forEach { spatioport.desamarrer(it) }
+
+        assertEquals(0, spatioport.nbPlacesOccupees())
+        assertEquals(10, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `desamarrer met à jour correctement le tonnage total`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO) // 100 tonnes
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR) // 10 tonnes
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        val tonnageAvant = spatioport.tonnagesTotalAmarres()
+
+        spatioport.desamarrer(v1)
+
+        assertEquals(tonnageAvant - v1.type.tonnage, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `desamarrer maintient la cohérence des compteurs`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+
+        spatioport.emplacementInutilisable(5)
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+
+        spatioport.desamarrer(v1)
+
+        val total = spatioport.nbPlacesLibres() +
+                spatioport.nbPlacesOccupees() +
+                spatioport.nbPlacesInutilisables()
+        assertEquals(spatioport.nbPlacesTotales(), total)
+    }
+}

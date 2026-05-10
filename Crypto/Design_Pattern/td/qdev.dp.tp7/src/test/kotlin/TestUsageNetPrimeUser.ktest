@@ -1,0 +1,247 @@
+import netprime.businesslayer.NetPrime
+import netprime.businesslayer.iUserRepository
+import netprime.datalayer.UserDAO
+import netprime.datalayer.datamodel.medias.Episode
+import netprime.datalayer.datamodel.medias.Media
+import netprime.datalayer.datamodel.medias.Movie
+import netprime.datalayer.datamodel.medias.Serie
+import netprime.datalayer.datamodel.users.*
+import netprime.datalayer.iUserDAO
+import netprime.exceptions.UserException
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+
+class TestUsageNetPrimeUser {
+    
+    lateinit var users: MutableSet<User>
+    lateinit var userDAO: iUserDAO
+    lateinit var netPrime: iUserRepository
+
+    var medias = mutableListOf<Media>()
+    var movies = mutableListOf<Movie>()
+    var series = mutableListOf<Serie>()
+    var episodes = mutableListOf<Episode>()
+
+
+    @BeforeEach
+    fun reinit() {
+        users = mutableSetOf<User>()
+        userDAO = UserDAO(users)
+        netPrime = NetPrime(users, medias, movies, series, episodes)
+    }
+
+
+    @Test
+    fun test0user() {
+        assertEquals(0, netPrime.nbUsers())
+    }
+
+    @Test
+    fun test1user() {
+        userDAO.addFrom("data/users/1_users.json")
+        assertEquals(1, netPrime.nbUsers())
+    }
+
+    @Test
+    fun test3user() {
+        userDAO.addFrom("data/users/1_users.json")
+        assertEquals(1, netPrime.nbUsers())
+        userDAO.addFrom("data/users/2_users.json")
+        assertEquals(3, netPrime.nbUsers())
+    }
+
+
+    @Test
+    fun test82user() {
+        userDAO.addFrom("data/users/2_users.json")
+        userDAO.addFrom("data/users/80_users.json")
+        assertEquals(82, netPrime.nbUsers())
+    }
+
+
+    @Test
+    fun testListByNat1User() {
+        userDAO.addFrom("data/users/1_users.json")
+        val consideredUser = User(
+            GENDER.male,
+            Name("Rafael", "Gordon"),
+            "rafael.gordon@example.com",
+            Login("crazysnake563", "arsenal"),
+            NAT.GB
+        )
+
+        var result = netPrime.listByNat(NAT.FR)
+        assertTrue(result.isEmpty())
+
+        result = netPrime.listByNat(NAT.GB)
+        assertEquals(1, result.size)
+        assertEquals(consideredUser, result[0])
+    }
+
+    @Test
+    fun testListByNat2User() {
+        val amanda = User(
+            GENDER.female,
+            Name("Amanda", "Gomez"),
+            "amanda.gomez@example.com",
+            Login("yellowzebra428", "barbara"),
+            NAT.GB
+        )
+
+        val lisa = User(
+            GENDER.female,
+            Name("Lisa", "Johnson"),
+            "lisa.johnson@example.com",
+            Login("yellowelephant638", "navy"),
+            NAT.GB
+        )
+
+        userDAO.addFrom("data/users/2_users.json")
+
+        var result = netPrime.listByNat(NAT.FR)
+        assertTrue(result.isEmpty())
+
+        result = netPrime.listByNat(NAT.GB)
+        assertEquals(2, result.size)
+        assertEquals("amanda.gomez@example.com", result[0].email)
+        assertEquals("lisa.johnson@example.com", result[1].email)
+        assertTrue(result.contains(amanda))
+        assertTrue(result.contains(lisa))
+    }
+
+
+    @Test
+    fun testListByNat80User() {
+        userDAO.addFrom("data/users/80_users.json")
+
+        var result = netPrime.listByNat(NAT.GB)
+        assertEquals(41, result.size)
+
+        val emails: MutableList<String> = mutableListOf(
+            "alison.sutton@example.com",
+            "amy.stewart@example.com",
+            "avery.hopkins@example.com",
+            "barry.miller@example.com",
+            "brett.grant@example.com",
+            "bryan.graham@example.com",
+            "carolyn.clark@example.com",
+            "clyde.chapman@example.com", //"corey.graham@example.com",
+            "earl.hansen@example.com",
+            "elijah.flores@example.com",
+            "eric.coleman@example.com",
+            "evan.castro@example.com",
+            "floyd.shelton@example.com",
+            "gilbert.daniels@example.com",
+            "heather.washington@example.com",
+            "herman.daniels@example.com",
+            "isabella.horton@example.com",
+            "izzie.holmes@example.com",
+            "jenny.stephens@example.com",
+            "jesse.patterson@example.com",
+            "jon.holt@example.com",
+            "juan.jensen@example.com",
+            "julie.brewer@example.com",
+            "katie.knight@example.com",
+            "lisa.patterson@example.com",
+            "maddison.lord@example.com",
+            "marshall.fowler@example.com",
+            "max.weaver@example.com",
+            "micheal.gonzalez@example.com",
+            "nathaniel.williamson@example.com",
+            "nathaniel.wright@example.com",
+            "rafael.gordon@example.com",
+            "ray.gilbert@example.com",
+            "ruben.mckinney@example.com",
+            "sam.turner@example.com",
+            "samantha.lord@example.com",
+            "sophie.meyer@example.com",
+            "susanna.robinson@example.com",
+            "suzanna.horton@example.com",
+            "vernon.smith@example.com",
+            "vicky.alvarez@example.com"
+        )
+        for (i in 0..40)
+            assertEquals(emails[i], result[i].email)
+    }
+
+
+    @Test
+    fun testContains1user() {
+        val consideredUser = User(
+            GENDER.male,
+            Name("Rafael", "Gordon"),
+            "rafael.gordon@example.com",
+            Login("crazysnake563", "arsenal"),
+            NAT.GB
+        )
+        userDAO.addFrom("data/users/1_users.json")
+        assertTrue(netPrime.contains(consideredUser))
+    }
+
+    @Test
+    fun testContains80user() {
+        val consideredUser = User(
+            GENDER.male,
+            Name("Rafael", "Gordon"),
+            "rafael.gordon@example.com",
+            Login("crazysnake563", "arsenal"),
+            NAT.GB
+        )
+        userDAO.addFrom("data/users/80_users.json")
+        assertTrue(netPrime.contains(consideredUser))
+    }
+
+    @Test
+    fun testContains2user() {
+        val consideredUser = User(
+            GENDER.male,
+            Name("Rafael", "Gordon"),
+            "rafael.gordon@example.com",
+            Login("crazysnake563", "arsenal"),
+            NAT.GB
+        )
+        userDAO.addFrom("data/users/2_users.json")
+        assertFalse(netPrime.contains(consideredUser))
+    }
+
+
+    @Test
+    fun testDeleteUser() {
+        val consideredUser = User(
+            GENDER.male,
+            Name("Rafael", "Gordon"),
+            "rafael.gordon@example.com",
+            Login("crazysnake563", "arsenal"),
+            NAT.GB
+        )
+        userDAO.addFrom("data/users/80_users.json")
+        assertEquals(80, netPrime.nbUsers())
+        assertTrue(netPrime.contains(consideredUser))
+
+        netPrime.deleteByEmail("rafael.gordon@example.com")
+        assertEquals(79, netPrime.nbUsers())
+        assertFalse(netPrime.contains(consideredUser))
+    }
+
+    @Test
+    fun deleteUserNotFound() {
+        userDAO.addFrom("data/users/80_users.json")
+        assertEquals(80, netPrime.nbUsers())
+
+        assertThrows<UserException> {
+            netPrime.deleteByEmail("xxxxx.xxxx@example.com")
+        }
+        assertEquals(80, netPrime.nbUsers())
+    }
+
+    // TODO : Tests listByGender(gender: GENDER)
+
+    // TODO : Tests listByFirstname(firstname: String)
+
+    // TODO : Tests containsByLastname(lastname: String)
+
+    // TODO : Tests giveLogin(name: Name)
+
+}

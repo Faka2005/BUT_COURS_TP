@@ -1,0 +1,46 @@
+package testexo2.strategy
+
+import exo2.Foyer
+import exo2.Impot
+import exo2.SITUATION
+import exo2.strategy.CalculImpot
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvSource
+
+
+class TestUsageImpotsAvecStrategy {
+
+    /* Cas de tests pour l'impémentation sans DP */
+    @ParameterizedTest(name = "Impot pour {2} personne(s) : revenu={0}, enfant(s)={3}")
+    @CsvSource(
+        "80000.0, 1000.0, 2, 2, 62500.0, 10417.0, 1400.0",
+        "80000.0, 1000.0, 2, 0, 64000.0, 16000.0, 2000.0",
+        "80000.0, 1000.0, 1, 0, 72000.0, 24000.0, 3000.0",
+        "80000.0, 1000.0, 1, 3, 67400.0, 11233.0, 775.0",
+        "40000.0, 1000.0, 2, 2, 30500.0, 5083.0, 1400.0",
+        "40000.0, 1000.0, 2, 0, 32000.0, 8000.0, 2000.0",
+        "40000.0, 1000.0, 1, 0, 36000.0, 12000.0, 3000.0",
+        "40000.0, 1000.0, 1, 3, 32200.0, 5367.0, 775.0",
+        "0.0, 0.0, 2, 0, 0.0, 0.0, 0.0",
+        "0.0, 0.0, 1, 0, 0.0, 0.0, 1000.0",
+        "0.0, 0.0, 1, 3, 0.0, 0.0, 0.0",
+        "0.0, 0.0, 2, 3, 0.0, 0.0, 0.0",
+        "2.0, 2.0, 1, 0, 1.8, 0.0, 1004.0",
+        "2.0, 2.0, 2, 3, 0.0, 0.0, 0.0",
+    )
+    fun testCalcul(
+        revenu: Double, loyer: Double, situation: Int, nbEnfants: Int,
+        expectedRevenusImposables: Double, expectedImpotsRevenu: Double, expectedTaxeHabitation: Double
+    ) {
+
+        val calculImpot: Impot = CalculImpot.donneCalculImpotStrategy(
+            Foyer(revenu, loyer, SITUATION.entries[situation - 1], nbEnfants)
+        )
+        val impotsRevenu = calculImpot.impotsSurLeRevenu()
+        val taxeHabitation = calculImpot.taxeHabitation()
+
+        assertEquals(expectedImpotsRevenu, impotsRevenu.toDouble(), 1.0)
+        assertEquals(expectedTaxeHabitation, taxeHabitation.toDouble(), 1.0)
+    }
+}

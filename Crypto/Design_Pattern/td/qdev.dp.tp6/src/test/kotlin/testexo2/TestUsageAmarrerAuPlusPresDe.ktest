@@ -1,0 +1,234 @@
+package testexo2
+
+import exo2.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+
+class TestUsageAmarrerAuPlusPresDe {
+
+    private lateinit var spatioport: Spatioport
+
+    @BeforeEach
+    fun setUp() {
+        spatioport = Spatioport(10)
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe amarre à la place demandée si elle est libre`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerAuPlusPresDe(vaisseau, 5)
+
+        assertEquals(5, spatioport.estAmarreA(vaisseau))
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe amarre à la place juste après si la place demandée est occupée`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrerA(v1, 3)
+        spatioport.amarrerAuPlusPresDe(v2, 3)
+
+        assertEquals(4, spatioport.estAmarreA(v2))
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe amarre à la place juste avant si la place demandée est occupée et après non disponible`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrerA(v1, 9)
+        spatioport.amarrerAuPlusPresDe(v2, 9)
+
+        assertEquals(8, spatioport.estAmarreA(v2))
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe trouve la place la plus proche avec plusieurs places occupées`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrerA(v1, 5)
+        spatioport.amarrerA(v2, 6)
+        spatioport.amarrerAuPlusPresDe(v3, 5)
+
+        assertEquals(4, spatioport.estAmarreA(v3))
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe trouve la place la plus proche avec plusieurs places occupées (2)`() {
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrerA(Vaisseau("V1", TypeVaisseau.CARGO), 5)
+        spatioport.amarrerA(Vaisseau("V2", TypeVaisseau.CHASSEUR), 6)
+        spatioport.amarrerA(Vaisseau("V4", TypeVaisseau.CHASSEUR), 4)
+        spatioport.amarrerA(Vaisseau("V5", TypeVaisseau.CHASSEUR), 3)
+        spatioport.amarrerA(Vaisseau("V6", TypeVaisseau.CHASSEUR), 7)
+        spatioport.amarrerAuPlusPresDe(v3, 5)
+
+        assertEquals(8, spatioport.estAmarreA(v3))
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe trouve la place la plus proche avec plusieurs places occupées (3)`() {
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrerA(Vaisseau("V1", TypeVaisseau.CARGO), 5)
+        spatioport.amarrerA(Vaisseau("V2", TypeVaisseau.CHASSEUR), 6)
+        spatioport.amarrerA(Vaisseau("V4", TypeVaisseau.CHASSEUR), 4)
+        spatioport.amarrerA(Vaisseau("V5", TypeVaisseau.CHASSEUR), 3)
+        spatioport.amarrerA(Vaisseau("V6", TypeVaisseau.CHASSEUR), 7)
+        spatioport.amarrerA(Vaisseau("V7", TypeVaisseau.CHASSEUR), 8)
+        spatioport.amarrerAuPlusPresDe(v3, 5)
+
+        assertEquals(2, spatioport.estAmarreA(v3))
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe trouve la place la plus proche avec plusieurs places occupées ou inutilisables`() {
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrerA(Vaisseau("V1", TypeVaisseau.CARGO), 5)
+        spatioport.emplacementInutilisable(6)
+        spatioport.amarrerA(Vaisseau("V4", TypeVaisseau.CHASSEUR), 4)
+        spatioport.emplacementInutilisable(3)
+        spatioport.emplacementInutilisable(7)
+        spatioport.amarrerA(Vaisseau("V7", TypeVaisseau.CHASSEUR), 8)
+        spatioport.amarrerAuPlusPresDe(v3, 5)
+
+        assertEquals(2, spatioport.estAmarreA(v3))
+    }
+
+
+    @Test
+    fun `amarrerAuPlusPresDe avec place inexistante négative lève PlaceInexistanteException`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+
+        assertThrows<PlaceInexistanteException> {
+            spatioport.amarrerAuPlusPresDe(vaisseau, -1)
+        }
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe avec place inexistante supérieure au maximum lève PlaceInexistanteException`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+
+        assertThrows<PlaceInexistanteException> {
+            spatioport.amarrerAuPlusPresDe(vaisseau, 10)
+        }
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe avec vaisseau déjà amarré lève VaisseauDejaAmarreException`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+
+        assertThrows<VaisseauDejaAmarreException> {
+            spatioport.amarrerAuPlusPresDe(vaisseau, 5)
+        }
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe saute les places inutilisables`() {
+        spatioport.emplacementInutilisable(5)
+        spatioport.emplacementInutilisable(6)
+
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrerA(v1, 4)
+        spatioport.amarrerAuPlusPresDe(v2, 5)
+
+        assertEquals(7, spatioport.estAmarreA(v2))
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe cherche en priorité après puis avant`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+        val v3 = Vaisseau("V3", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrerA(v1, 5)
+        spatioport.amarrerA(v2, 3)
+        spatioport.amarrerAuPlusPresDe(v3, 5)
+
+        assertTrue(spatioport.estAmarreA(v3) > 5)
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe avec spatioport plein lève SpatioportPleinException`() {
+        val vaisseaux = List(10) { Vaisseau("V$it", TypeVaisseau.CARGO) }
+        vaisseaux.forEach { spatioport.amarrer(it) }
+
+        val nouveauVaisseau = Vaisseau("Nouveau", TypeVaisseau.CHASSEUR)
+
+        assertThrows<SpatioportPleinException> {
+            spatioport.amarrerAuPlusPresDe(nouveauVaisseau, 5)
+        }
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe à la première place`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerAuPlusPresDe(vaisseau, 0)
+
+        assertEquals(0, spatioport.estAmarreA(vaisseau))
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe à la dernière place`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrerAuPlusPresDe(vaisseau, 9)
+
+        assertEquals(9, spatioport.estAmarreA(vaisseau))
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe trouve la place plus proche à égale distance`() {
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("V2", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrerA(v1, 5)
+        spatioport.amarrerAuPlusPresDe(v2, 5)
+
+        val place = spatioport.estAmarreA(v2)
+        assertTrue(place == 4 || place == 6)
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe met à jour le nombre de places libres`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        val placesLibresAvant = spatioport.nbPlacesLibres()
+
+        spatioport.amarrerAuPlusPresDe(vaisseau, 5)
+
+        assertEquals(placesLibresAvant - 1, spatioport.nbPlacesLibres())
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe met à jour le tonnage total`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        val tonnageAvant = spatioport.tonnagesTotalAmarres()
+
+        spatioport.amarrerAuPlusPresDe(vaisseau, 7)
+
+        assertEquals(tonnageAvant + vaisseau.type.tonnage, spatioport.tonnagesTotalAmarres())
+    }
+
+    @Test
+    fun `amarrerAuPlusPresDe avec plusieurs places inutilisables autour`() {
+        spatioport.emplacementInutilisable(4)
+        spatioport.emplacementInutilisable(5)
+        spatioport.emplacementInutilisable(6)
+
+        val v1 = Vaisseau("V1", TypeVaisseau.CARGO)
+        spatioport.amarrerAuPlusPresDe(v1, 5)
+
+        val place = spatioport.estAmarreA(v1)
+        assertTrue(place == 3 || place == 7)
+    }
+}

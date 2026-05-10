@@ -1,0 +1,197 @@
+<?php
+
+namespace App\Models\Produit;
+
+use App\Entities\ProduitEntity;
+use CodeIgniter\Model;
+
+class ProduitModel extends Model
+{
+    protected $table = 'produit';
+    protected $primaryKey = 'id_produit';
+    protected $returnType = ProduitEntity::class;
+    protected $allowedFields = [
+        'name',
+        'price',
+        'description',
+        'niveauPrestige',
+        'notation',
+        'taille',
+        'quantiteRestante',
+        'marque',
+        'categorie',
+        'image_name',
+        'type',
+        'saison',
+        'origine',
+    ];
+    protected bool $updateOnlyChanged = true;
+
+    /**
+     * Renvoie tous les produits disponibles
+     */
+    public function getDisponibles(): array
+    {
+        return $this->where('quantiteRestante >', 0)->findAll();
+    }
+
+    /**
+     * Renvoie un produit par son ID
+     */
+    public function getById(int $id)
+    {
+        return $this->find($id);
+    }
+
+    /**
+     * Renvoie une liste de produits d'une marque
+     */
+    public function getByMarque(string $marque)
+    {
+        return $this->like('marque', $marque)->findAll();
+    }
+
+    /**
+     * Renvoie une liste de produits d'une  catégorie
+     */
+    public function getByCategorie(string $categorie)
+    {
+        return $this->like('categorie', $categorie)->findAll();
+    }
+
+    /**
+     * Renvoie une liste de produits d'une  saison
+     */
+    public function getBySaison(string $saison)
+    {
+        return $this->like('saison', $saison)->findAll();
+    }
+
+    public function getByOrigine(string $origine)
+    {
+        return $this->like('origine', $origine)->findAll();
+    }
+
+    /**
+     * Renvoie une liste de produits selon leur origine.
+     *
+     * @param string $origine Origine recherchée
+     * @return array Tableau de produits
+     */
+
+    public function getByType(string $type)
+    {
+        return $this->like('type', $type)->findAll();
+    }
+
+    /**
+     * Renvoie une liste de produits selon leur type.
+     *
+     * @param string $type Type recherché
+     * @return array Tableau de produits
+     */
+
+    public function getByPrix(float $prix)
+    {
+        return $this->where('price <=', $prix)->findAll();
+    }
+
+    /**
+     * Renvoie une liste de produits dont le prix est inférieur ou égal au prix donné.
+     *
+     * @param float $prix Prix maximum
+     * @return array Tableau de produits
+     */
+
+    public function getByMarqueSorted(string $marque, string $col, string $order = 'ASC')
+    {
+        return $this->like('marque', $marque)
+            ->orderBy($col, $order)
+            ->findAll();
+    }
+
+    /**
+     * Renvoie une liste de produits d'une marque triée par une colonne donnée.
+     *
+     * @param string $marque Marque recherchée
+     * @param string $col Colonne pour le tri
+     * @param string $order Ordre de tri ('ASC' ou 'DESC')
+     * @return array Tableau de produits triés
+     */
+
+    public function getByMarqueAndPrix(string $marque, float $prix)
+    {
+        return $this->where('price <=', $prix)
+            ->like('marque', $marque)
+            ->findAll();
+    }
+
+    /**
+     * Renvoie une liste de produits filtrés par marque et prix maximum.
+     *
+     * @param string $marque Marque recherchée
+     * @param float $prix Prix maximum
+     * @return array Tableau de produits
+     */
+
+
+    /**
+     * Renvoie la liste des produits
+     * @return array
+     */
+    public function getListeProduit()
+    {
+        return $this->findAll();
+    }
+
+    /**
+     * Augmente la quantité d'un produit
+     */
+    public function IncrementQauntite(int $id, int $amount = 1): bool
+    {
+        return $this->builder()
+            ->where('id_produit', $id)
+            ->set('quantiteRestante', "quantiteRestante + $amount", false)
+            ->update();
+    }
+
+    /**
+     * Diminue la quantité d'un produit
+     * (empêche le stock négatif)
+     */
+    public function DecrementQauntite(int $id, int $amount = 1): bool
+    {
+        return $this->builder()
+            ->where('id_produit', $id)
+            ->where('quantiteRestante >=', $amount)
+            ->set('quantiteRestante', "quantiteRestante - $amount", false)
+            ->update();
+    }
+
+    /**
+     * Transforme une entité générique en entité spécifique (Creme, Encens, etc.)
+     */
+    public function castToSpecificEntity($produit)
+    {
+        if (!$produit)
+            return null;
+
+        $data = $produit->toArray();
+        $type = strtolower(trim($produit->type ?? ''));
+
+        switch ($type) {
+            case 'cremes':
+            case 'creme':
+                return new \App\Entities\CremeEntity($data);
+            case 'encens':
+                return new \App\Entities\EncensEntity($data);
+            case 'parfums':
+            case 'parfum':
+                return $produit;
+            default:
+                return $produit;
+        }
+    }
+
+
+}

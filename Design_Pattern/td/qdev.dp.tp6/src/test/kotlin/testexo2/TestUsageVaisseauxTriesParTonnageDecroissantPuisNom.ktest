@@ -1,0 +1,242 @@
+package testexo2
+
+import exo2.Spatioport
+import exo2.TypeVaisseau
+import exo2.Vaisseau
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
+
+class TestUsageVaisseauxTriesParTonnageDecroissantPuisNom {
+
+    private lateinit var spatioport: Spatioport
+
+    @BeforeEach
+    fun setUp() {
+        spatioport = Spatioport(10)
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom retourne une liste vide pour un spatioport vide`() {
+        val vaisseaux = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertTrue(vaisseaux.isEmpty())
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom retourne un seul vaisseau`() {
+        val vaisseau = Vaisseau("Faucon", TypeVaisseau.CARGO)
+        spatioport.amarrer(vaisseau)
+
+        val vaisseaux = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(1, vaisseaux.size)
+        assertEquals("Faucon", vaisseaux[0].nom)
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom trie par tonnage décroissant`() {
+        val cargo = Vaisseau("Cargo1", TypeVaisseau.CARGO)
+        val chasseur = Vaisseau("Chasseur1", TypeVaisseau.CHASSEUR)
+        val destroyer = Vaisseau("Corvette1", TypeVaisseau.CORVETTE)
+
+        spatioport.amarrer(chasseur)
+        spatioport.amarrer(cargo)
+        spatioport.amarrer(destroyer)
+
+        val vaisseaux = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(3, vaisseaux.size)
+        assertTrue(vaisseaux[0].type.tonnage >= vaisseaux[1].type.tonnage)
+        assertTrue(vaisseaux[1].type.tonnage >= vaisseaux[2].type.tonnage)
+        assertEquals("Cargo1", vaisseaux[0].nom)
+        assertEquals("Corvette1", vaisseaux[1].nom)
+        assertEquals("Chasseur1", vaisseaux[2].nom)
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom trie par nom si tonnage identique`() {
+        val cargo1 = Vaisseau("Zulu", TypeVaisseau.CARGO)
+        val cargo2 = Vaisseau("Alpha", TypeVaisseau.CARGO)
+        val cargo3 = Vaisseau("Bravo", TypeVaisseau.CARGO)
+
+        spatioport.amarrer(cargo1)
+        spatioport.amarrer(cargo2)
+        spatioport.amarrer(cargo3)
+
+        val vaisseaux = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(3, vaisseaux.size)
+        assertEquals("Alpha", vaisseaux[0].nom)
+        assertEquals("Bravo", vaisseaux[1].nom)
+        assertEquals("Zulu", vaisseaux[2].nom)
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom avec tous les types de vaisseaux`() {
+        val cargo = Vaisseau("Charlie", TypeVaisseau.CARGO)
+        val chasseur = Vaisseau("Alpha", TypeVaisseau.CHASSEUR)
+        val croiseur = Vaisseau("Delta", TypeVaisseau.CROISEUR)
+        val corvette = Vaisseau("Bravo", TypeVaisseau.CORVETTE)
+
+        spatioport.amarrer(chasseur)
+        spatioport.amarrer(cargo)
+        spatioport.amarrer(corvette)
+        spatioport.amarrer(croiseur)
+
+        val vaisseaux = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(4, vaisseaux.size)
+        for (i in 0 until vaisseaux.size - 1) {
+            assertTrue(
+                vaisseaux[i].type.tonnage > vaisseaux[i + 1].type.tonnage ||
+                        (vaisseaux[i].type.tonnage == vaisseaux[i + 1].type.tonnage &&
+                                vaisseaux[i].nom <= vaisseaux[i + 1].nom)
+            )
+        }
+        assertEquals("Charlie", vaisseaux[0].nom)
+        assertEquals("Delta", vaisseaux[1].nom)
+        assertEquals("Bravo", vaisseaux[2].nom)
+        assertEquals("Alpha", vaisseaux[3].nom)
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom avec mix de tonnages et noms`() {
+        val destroyer1 = Vaisseau("Omega", TypeVaisseau.CROISEUR)
+        val destroyer2 = Vaisseau("Alpha", TypeVaisseau.CROISEUR)
+        val cargo = Vaisseau("Beta", TypeVaisseau.CARGO)
+        val chasseur = Vaisseau("Gamma", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrer(cargo)
+        spatioport.amarrer(destroyer1)
+        spatioport.amarrer(chasseur)
+        spatioport.amarrer(destroyer2)
+
+        val vaisseaux = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(4, vaisseaux.size)
+        assertEquals("Beta", vaisseaux[0].nom)
+        assertEquals(TypeVaisseau.CARGO, vaisseaux[0].type)
+        assertEquals("Alpha", vaisseaux[1].nom)
+        assertEquals(TypeVaisseau.CROISEUR, vaisseaux[1].type)
+        assertEquals("Omega", vaisseaux[2].nom)
+        assertEquals(TypeVaisseau.CROISEUR, vaisseaux[2].type)
+        assertEquals("Gamma", vaisseaux[3].nom)
+        assertEquals(TypeVaisseau.CHASSEUR, vaisseaux[3].type)
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom ignore les places libres`() {
+        val v1 = Vaisseau("Delta", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("Alpha", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrerA(v1, 2)
+        spatioport.amarrerA(v2, 7)
+
+        val vaisseaux = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(2, vaisseaux.size)
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom ignore les places inutilisables`() {
+        spatioport.emplacementInutilisable(1)
+        spatioport.emplacementInutilisable(4)
+
+        val v1 = Vaisseau("Charlie", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("Bravo", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+
+        val vaisseaux = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(2, vaisseaux.size)
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom après désamarrage`() {
+        val v1 = Vaisseau("Gamma", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("Alpha", TypeVaisseau.CROISEUR)
+        val v3 = Vaisseau("Beta", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        spatioport.amarrer(v3)
+        spatioport.desamarrer(v1)
+
+        val vaisseaux = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(2, vaisseaux.size)
+        assertEquals("Alpha", vaisseaux[0].nom)
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom ne modifie pas le spatioport`() {
+        val v1 = Vaisseau("Victor", TypeVaisseau.CARGO)
+        val v2 = Vaisseau("Uniform", TypeVaisseau.CROISEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+
+        val nbPlacesOccupeesAvant = spatioport.nbPlacesOccupees()
+        spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(nbPlacesOccupeesAvant, spatioport.nbPlacesOccupees())
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom retourne une nouvelle liste`() {
+        val v1 = Vaisseau("X", TypeVaisseau.CARGO)
+        spatioport.amarrer(v1)
+
+        val liste1 = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+        val liste2 = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertNotSame(liste1, liste2)
+        assertEquals(liste1.size, liste2.size)
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom avec spatioport plein de même type`() {
+        val vaisseaux = listOf(
+            Vaisseau("J", TypeVaisseau.CARGO),
+            Vaisseau("A", TypeVaisseau.CARGO),
+            Vaisseau("F", TypeVaisseau.CARGO),
+            Vaisseau("C", TypeVaisseau.CARGO),
+            Vaisseau("H", TypeVaisseau.CARGO)
+        )
+        vaisseaux.forEach { spatioport.amarrer(it) }
+
+        val vaisseauxTries = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(5, vaisseauxTries.size)
+        for (i in 0 until vaisseauxTries.size - 1) {
+            assertTrue(vaisseauxTries[i].nom <= vaisseauxTries[i + 1].nom)
+        }
+    }
+
+    @Test
+    fun `vaisseauxTriesParTonnageDecroissantPuisNom ordre complexe`() {
+        val v1 = Vaisseau("Zulu", TypeVaisseau.CHASSEUR)
+        val v2 = Vaisseau("Alpha", TypeVaisseau.CORVETTE)
+        val v3 = Vaisseau("Bravo", TypeVaisseau.CROISEUR)
+        val v4 = Vaisseau("Charlie", TypeVaisseau.CARGO)
+        val v5 = Vaisseau("Delta", TypeVaisseau.CHASSEUR)
+
+        spatioport.amarrer(v1)
+        spatioport.amarrer(v2)
+        spatioport.amarrer(v3)
+        spatioport.amarrer(v4)
+        spatioport.amarrer(v5)
+
+        val vaisseaux = spatioport.vaisseauxTriesParTonnageDecroissantPuisNom()
+
+        assertEquals(5, vaisseaux.size)
+        assertEquals("Charlie", vaisseaux[0].nom)
+        assertEquals("Bravo", vaisseaux[1].nom)
+        assertEquals("Alpha", vaisseaux[2].nom)
+        assertEquals("Delta", vaisseaux[3].nom)
+        assertEquals("Zulu", vaisseaux[4].nom)
+    }
+}

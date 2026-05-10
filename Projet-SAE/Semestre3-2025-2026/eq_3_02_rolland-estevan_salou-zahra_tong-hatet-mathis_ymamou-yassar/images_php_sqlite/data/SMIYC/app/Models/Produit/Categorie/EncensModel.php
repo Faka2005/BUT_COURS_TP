@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Models\Produit\Categorie;
+
+use CodeIgniter\Model;
+use App\Entities\EncensEntity;
+
+class EncensModel extends Model
+{
+    protected $table      = 'produit';
+    protected $primaryKey = 'id_produit';
+
+    // On indique au Model d'utiliser l'Entity pour les résultats
+    protected $returnType = EncensEntity::class;
+
+    // Tous les champs définis dans ta migration doivent être ici
+    protected $allowedFields = [
+        'image_name', 
+        'name', 
+        'description', 
+        'price', 
+        'niveauPrestige', 
+        'notation', 
+        'taille', 
+        'quantiteRestante', 
+        'marque',
+        'origine',
+        'dureeCombustion',
+        'type',
+        'saison',
+    ];
+
+    protected $useTimestamps = false;
+
+    /**
+     * Récupère les produits de type "encens".
+     *
+     * @return array Tableau de produits encens
+     */
+    public function getEncens(): array
+    {
+        return $this->where('type', 'encens')->findAll();
+    }
+
+}

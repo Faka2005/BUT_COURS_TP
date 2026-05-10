@@ -1,0 +1,14 @@
+### GET request to example server
+GET http://localhost:4000/books
+
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "john",
+  "password": "password123admin"
+}
+### GET request to example server
+GET http://localhost:4000/books
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzkzNDUyODQsImV4cCI6MTczOTM0NjQ4NH0.GWIt7lJkhXNF19yJR7625CJboHwaO8ZZUEag94KR5zo

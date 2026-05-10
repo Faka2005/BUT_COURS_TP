@@ -1,0 +1,204 @@
+﻿Nom;Numéro du stationnement;Etat;Type d'accès;Type de parking;Surveillé;Gratuit;Adresse;Code postal;Commune;Situé en ouvrage;Recharge VAE;Soumis à abonnement;Capacité;Places ou abonnements disponibles;Géolocalisation;placesmap
+Les Sorinières;177;Disponible;Accès libre;Individuel;Non;Oui;Route de l'Orcerie;44840;Les Sorinières;Hors ouvrage;Non;Non;4;3;47.1590737, -1.5177793;3
+La Quintaine;221;Disponible;Accès libre;Individuel;Non;Oui;Rue Charles de Gaulle;44115;Basse-Goulaine;Hors ouvrage;Non;Non;2;2;47.216495, -1.462262;2
+Aire du Clouet;214;Disponible;Accès libre;Individuel;Non;Oui;2, rue du Clouet;44470;Carquefou;Hors ouvrage;Non;Non;2;1;47.309431, -1.481579;1
+Gréneraie collectif accès contrôlé;84;Disponible;Accès contrôlé;Collectif;Non;Oui;1 Boulevard Emile Gabory;44000;Nantes;Hors ouvrage;Oui;Oui;20;15;47.199749, -1.533157;15
+Gare de Bouaye collectif accès contrôlé;56;Disponible;Accès contrôlé;Collectif;Non;Oui;Allée Louis Armand;44830;Bouaye;Hors ouvrage;Oui;Oui;58;24;47.138209, -1.681361;24
+Suzanne Lenglen;199;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Pierre de Coubertin;44100;Nantes;Hors ouvrage;Non;Non;4;3;47.229116, -1.588216;3
+Estuaire;216;Disponible;Accès libre;Individuel;Non;Oui;Boulevard batonnier Cholet;44100;Nantes;Hors ouvrage;Non;Non;4;0;47.202554, -1.614766;0
+Santos Dumont;12;Disponible;Accès libre;Individuel;Non;Oui;83 Rue des Renards;44000;Nantes;Hors ouvrage;Non;Non;12;7;47.2591112, -1.5683596;7
+Trentemoult Sablières;60;Disponible;Accès libre;Individuel;Non;Oui;25, rue de la Californie;44400;Rezé;Hors ouvrage;Non;Non;4;1;47.190867, -1.585437;1
+Bois Saint-Lys;181;Disponible;Accès libre;Individuel;Non;Oui;Mail des Gauteries;44470;Carquefou;Hors ouvrage;Non;Non;2;2;47.300333, -1.481918;2
+Boulevard de Doulon;123;Disponible;Accès libre;Individuel;Non;Oui;Boulevard de Doulon;44000;Nantes;Hors ouvrage;Non;Non;6;1;47.224048, -1.519943;1
+Gare Sud 4;143;Abo. complets;Accès contrôlé;Collectif;Oui;Non;Rue Marcel Paul;44000;Nantes;En ouvrage;Non;Oui;50;0;47.215075, -1.537814;0
+Feydeau;154;Abo. complets;Accès contrôlé;Collectif;Oui;Non;Rue Léon Maître;44000;Nantes;En ouvrage;Oui;Oui;50;0;47.214163, -1.552939;0
+Gare de Basse-Indre - Saint-Herblain collectif accès contrôlé;190;Disponible;Accès contrôlé;Collectif;Non;Oui;Rue de la Gare;44610;Basse-Indre;Hors ouvrage;Non;Oui;48;38;47.204364, -1.660198;38
+P+R Bas de Chantenay;213;Disponible;Accès libre;Individuel;Non;Oui;Boulevard de Chantenay;44100;Nantes;Hors ouvrage;Non;Non;4;0;47.196082, -1.590955;0
+Gare de Vertou Nord;212;Disponible;Accès libre;Individuel;Non;Oui;Rue du Laurier Fleuri;44120;Vertou;Hors ouvrage;Non;Non;6;3;47.18636, -1.477989;3
+Neruda;43;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Salvador Allende;44800;Saint-Herblain;Hors ouvrage;Non;Non;6;2;47.21791, -1.614245;2
+Saint Jean de Boiseau;205;Disponible;Accès libre;Individuel;Non;Oui;Place de la Liberté;44640;Saint-Jean-de-Boiseau;Hors ouvrage;Non;Non;4;1;47.196159, -1.724778;1
+Fleuriaye;115;Disponible;Accès libre;Individuel;Non;Oui;Rond point de la Fleuriaye;44470;Carquefou;Hors ouvrage;Non;Non;2;2;47.298674, -1.499607;2
+Gare Sud Parvis;218;Disponible;Accès contrôlé;Collectif;Oui;Non;50 boulevard de Berlin;44000;Nantes;En ouvrage;Oui;Oui;1216;0;47.216295, -1.540444;0
+Médiathèque Condorcet;220;Disponible;Accès libre;Individuel;Non;Oui;3 Square Pablo Neruda;44020;Bouguenais;Hors ouvrage;Non;Non;4;0;47.170742, -1.622327;0
+Durantière Piscine;21;Disponible;Accès libre;Individuel;Non;Oui;15 rue de la Durantière;44000;Nantes;Hors ouvrage;Non;Non;10;7;47.2131104, -1.5987292;7
+Feydeau Bis;172;Disponible;Accès contrôlé;Collectif;Oui;Non;Rue Léon Maître;44000;Nantes;En ouvrage;Oui;Oui;20;0;47.21398, -1.552783;0
+Champ de Foire;57;Disponible;Accès libre;Individuel;Non;Oui;23 D85 / Route du Champ de Foire;44860;Saint-Aignan-de-Grandlieu;Hors ouvrage;Non;Non;4;0;47.124614, -1.618567;0
+Dervallières;175;Disponible;Accès libre;Individuel;Non;Oui;175 boulevard du Massacre;44000;Nantes;Hors ouvrage;Non;Non;4;3;47.229083, -1.597613;3
+Gare de Mauves;105;Disponible;Accès libre;Individuel;Non;Oui;2 Place de la Gare;44470;Mauves-sur-Loire;Hors ouvrage;Non;Non;10;4;47.293016, -1.389664;4
+Médiathèque;128;Disponible;Accès libre;Individuel;Non;Oui;Allée du cimetière;44710;Saint-Léger-les-Vignes;Hors ouvrage;Non;Non;2;0;47.13658, -1.730855;0
+Babinière collectif accès contrôlé;76;Disponible;Accès contrôlé;Collectif;Non;Oui;Avenue de la Babinière;44240;La-Chapelle-sur-Erdre;Hors ouvrage;Non;Oui;24;8;47.259204, -1.545681;8
+Haluchère collectif accès contrôlé;169;Disponible;Accès contrôlé;Collectif;Non;Oui;Rue de la Petite Baratte;44000;Nantes;Hors ouvrage;Non;Oui;48;3;47.249909, -1.523305;3
+Les Nefs;206;Disponible;Accès contrôlé;Collectif;Oui;Non;Boulevard de l'Estuaire;44200;Nantes;En ouvrage;Oui;Oui;36;0;47.203765, -1.562995;0
+Gare de Thouaré collectif accès contrôlé;104;Disponible;Accès contrôlé;Collectif;Non;Oui;Rue des Ponts;44470;Thouaré-sur-Loire;Hors ouvrage;Non;Oui;32;13;47.2652088, -1.4406095;13
+Chateaubriand / Foch;107;Disponible;Accès libre;Individuel;Non;Oui;Rue François René de Chateaubriand;44470;Carquefou;Hors ouvrage;Non;Non;4;2;47.3040137, -1.4852344;2
+Ile de Grande Biesse;223;Disponible;Accès libre;Individuel;Non;Oui;5 Rue Grande Biesse;44200;Nantes;Hors ouvrage;Non;Non;2;2;47.206289, -1.548957;2
+Haluchère Batignolles collectif accès contrôlé;114;Disponible;Accès contrôlé;Collectif;Non;Oui;12 Rue du Ranzay;44000;Nantes;Hors ouvrage;Non;Oui;44;1;47.248477, -1.52255;1
+Chabossière;174;Disponible;Accès libre;Individuel;Non;Oui;45 Boulevard de la Libération / D17;44220;Couëron;Hors ouvrage;Non;Non;2;2;47.215396, -1.682487;2
+Chapeau Verni;36;Disponible;Accès libre;Individuel;Non;Oui;181 Route de Clisson;44230;Saint-Sébastien-sur-Loire;Hors ouvrage;Non;Non;4;1;47.18956, -1.510905;1
+Basse-Goulaine;197;Disponible;Accès libre;Individuel;Non;Oui;Rue de la Champagnère;44115;Basse-Goulaine;Hors ouvrage;Non;Non;2;0;47.210811, -1.464726;0
+Conservatoire;86;Disponible;Accès libre;Individuel;Non;Oui;Rue Gaëtan Rondeau;44000;Nantes;Hors ouvrage;Non;Non;5;1;47.206687, -1.533081;1
+Gare de Chantenay / Maréchal Juin bis;217;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Maréchal Juin;44000;Nantes;Hors ouvrage;Non;Non;2;0;47.19773, -1.59486;0
+Cheverny;202;Disponible;Accès libre;Individuel;Non;Oui;Route de Vannes;44800;Saint-Herblain;Hors ouvrage;Non;Non;2;1;47.246526, -1.604994;1
+Dépôt Test;11;Indisponible;Accès libre;Individuel;Non;Non;;44400;Rezé;Hors ouvrage;Non;Oui;6;4;;-1
+Gare Nord Château n+1;138;Disponible;Accès contrôlé;Collectif;Oui;Non;27 Boulevard de Stalingrad;44000;Nantes;En ouvrage;Non;Oui;200;0;47.217165, -1.543912;0
+Espace Diderot;95;Disponible;Accès libre;Individuel;Non;Oui;Avenue de la Vendée;44400;Rezé;Hors ouvrage;Non;Non;10;2;47.184522, -1.562854;2
+Bretagne;147;Disponible;Accès contrôlé;Collectif;Oui;Non;Place de Bretagne;44000;Nantes;En ouvrage;Oui;Oui;85;0;47.218009, -1.558361;0
+Rivière;24;Disponible;Accès libre;Individuel;Non;Oui;156 Rue du Grignon;44115;Basse-Goulaine;Hors ouvrage;Non;Non;2;0;47.215352, -1.475607;0
+Bourdonnières Lycée;39;Indisponible;Accès libre;Individuel;Non;Oui;61 Rue des Bourdonnières;44000;Nantes;Hors ouvrage;Non;Non;2;2;47.186731, -1.521386;-1
+Challonge;25;Disponible;Accès libre;Individuel;Non;Oui;2 Rue de Tasmanie;44115;Basse-Goulaine;Hors ouvrage;Non;Non;2;0;47.189664, -1.4717319;0
+Landreau;121;Disponible;Accès libre;Individuel;Non;Oui;18 Rue du Moulin Neuf;44000;Nantes;Hors ouvrage;Non;Non;4;3;47.231936, -1.51557;3
+Gare Sud 3 Bis;170;Disponible;Accès contrôlé;Collectif;Oui;Non;38 Rue du Pré Gauchet;44000;Nantes;En ouvrage;Oui;Oui;95;0;47.2146729, -1.5393637;0
+Descartes;134;Abo. complets;Accès contrôlé;Collectif;Non;Non;Rue Descartes;44000;Nantes;En ouvrage;Oui;Oui;30;0;47.217219, -1.564061;0
+8 Mai collectif accès libre;91;Disponible;Accès libre;Collectif;Non;Oui;Place du Huit Mai;44400;Rezé;Hors ouvrage;Non;Non;20;11;47.189279, -1.551902;11
+Moulin Boisseau;106;Disponible;Accès libre;Individuel;Non;Oui;Boulevard de l'Epinay;44470;Carquefou;Hors ouvrage;Non;Non;4;2;47.28819154511197, -1.4839470394841319;2
+Coutancière;17;Disponible;Accès libre;Individuel;Non;Oui;Rue de l'Aven;44240;La-Chapelle-sur-Erdre;Hors ouvrage;Non;Non;6;6;47.306122, -1.560034;6
+Clos Toreau;42;Disponible;Accès libre;Individuel;Non;Oui;31 Boulevard Emile Gabory;44000;Nantes;Hors ouvrage;Non;Non;8;1;47.1941123, -1.5286407;1
+Bout des Pavés Alberto Giacometti;9;Disponible;Accès libre;Individuel;Non;Oui;2 Rue Alberto Giacometti;44700;Orvault;Hors ouvrage;Non;Non;6;1;47.253152, -1.576516;1
+Commerce - Vélos Cargos;146;Disponible;Accès contrôlé;Collectif;Oui;Non;Allée Brancas;44000;Nantes;En ouvrage;Oui;Oui;25;0;47.213442, -1.557275;0
+Abel Durand;176;Disponible;Accès libre;Individuel;Non;Oui;Rond-Point Abel Durand;44162;Saint-Herblain;Hors ouvrage;Non;Non;4;0;47.221063, -1.602291;0
+Bac de Loire;125;Disponible;Accès libre;Individuel;Non;Oui;Cale du Bac;44610;Indre;Hors ouvrage;Non;Non;4;1;47.197741, -1.673784;1
+Joliverie;37;Disponible;Accès libre;Individuel;Non;Oui;130 Route de Clisson;44000;Nantes;Hors ouvrage;Non;Non;6;1;47.189455, -1.517273;1
+Foch Cathédrale;152;Disponible;Accès contrôlé;Collectif;Oui;Non;7 rue-straed Tournefort;44000;Nantes;En ouvrage;Non;Oui;54;0;47.221186, -1.551634;0
+La Montagne;50;Disponible;Accès libre;Individuel;Non;Oui;Rue de la Courante / RD58;44620;La Montagne;Hors ouvrage;Non;Non;4;0;47.188411, -1.68922;0
+Gare de Chantenay;193;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Maréchal Juin / Rue de la Gare de Chantenay;44100;Nantes;Hors ouvrage;Non;Non;2;1;47.197436, -1.5943175;1
+Babinière;228;Disponible;Accès contrôlé;Collectif;Non;Oui;Avenue de la Babinière;44240;La Chapelle;Hors ouvrage;Non;Oui;55;0;47.259669, -1.546956;0
+Bourdonnières;38;Disponible;Accès libre;Individuel;Non;Oui;54 rue des Bourdonnières;44000;Nantes;Hors ouvrage;Non;Non;4;2;47.186675, -1.521838;2
+Mairie de Couëron;46;Disponible;Accès libre;Individuel;Non;Oui;Place Charles De Gaulle;44220;Couëron;Hors ouvrage;Non;Non;4;0;47.212045, -1.726961;0
+René Cassin;13;Disponible;Accès libre;Individuel;Non;Oui;1 Boulevard René Cassin;44000;Nantes;Hors ouvrage;Non;Non;10;0;47.264132, -1.575248;0
+Ranzay collectif accès libre;113;Disponible;Accès libre;Collectif;Non;Oui;Rue du Port Durand;44000;Nantes;Hors ouvrage;Non;Non;24;10;47.253026, -1.5303023;10
+Sillon de Bretagne;4;Disponible;Accès libre;Individuel;Non;Oui;Avenue de l'Angevinière;44800;Saint-Herblain;Hors ouvrage;Non;Non;6;4;47.245383, -1.608513;4
+Duguay Trouin Collectif Accès Contrôlé;209;Disponible;Accès contrôlé;Collectif;Non;Oui;Rue Duguay Trouin;44800;Saint-Herblain;Hors ouvrage;Non;Oui;37;0;47.224095, -1.617054;0
+Graslin;149;Abo. complets;Accès contrôlé;Collectif;Oui;Non;Rue du Chapeau Rouge;44000;Nantes;En ouvrage;Oui;Oui;27;0;47.214549, -1.562451;0
+Recteur Schmitt;75;Disponible;Accès libre;Individuel;Non;Oui;34 Rue de la Bourgeonnière;44000;Nantes;Hors ouvrage;Non;Non;10;0;47.2520006, -1.5525188;0
+Médiathèque;150;Disponible;Accès contrôlé;Collectif;Oui;Non;37 Quai de la Fosse;44000;Nantes;En ouvrage;Oui;Oui;81;0;47.210921, -1.561988;0
+Cité des Congrès;148;Disponible;Accès contrôlé;Collectif;Oui;Non;Avenue Jean-Claude Bonduelle;44000;Nantes;En ouvrage;Oui;Oui;29;0;47.213503, -1.543706;0
+Saint-Joseph de Porterie;111;Disponible;Accès libre;Individuel;Non;Oui;20 Allée de l'Embellie;44000;Nantes;Hors ouvrage;Non;Non;3;3;47.267703, -1.516575;3
+Grande Ouche;97;Disponible;Accès libre;Individuel;Non;Oui;Impasse de la Boisselée;44340;Bouguenais;Hors ouvrage;Non;Non;8;2;47.181532, -1.579609;2
+Collège de Goulaine;157;Disponible;Accès libre;Individuel;Non;Oui;Rue du Général Leclerc;44115;Basse-Goulaine;Hors ouvrage;Non;Non;8;8;47.217448, -1.461992;8
+Gare de Pont Rousseau collectif accès contrôlé;90;Disponible;Accès contrôlé;Collectif;Non;Oui;Rue de la Gare;44400;Rezé;Hors ouvrage;Non;Oui;14;11;47.192573, -1.548752;11
+Gréneraie collectif accès libre;85;Disponible;Accès libre;Collectif;Non;Oui;1 Boulevard Emile Gabory;44000;Nantes;Hors ouvrage;Oui;Non;20;15;47.199692, -1.5331;15
+Point du jour;99;Disponible;Accès libre;Individuel;Non;Oui;Rue des Cyprès;44470;Thouaré-sur-Loire;Hors ouvrage;Non;Non;2;0;47.264919, -1.442235;0
+Barbinais;225;Disponible;Accès libre;Individuel;Non;Oui;14 Rue de la Barbinais;44100;Nantes;Hors ouvrage;Non;Non;2;2;47.203683, -1.577436;2
+La Carrée;196;Disponible;Accès libre;Individuel;Non;Oui;Rue Charles Rivière;44400;Rezé;Hors ouvrage;Non;Non;2;0;47.168756, -1.5429;0
+Gare Sud 4 Bis;171;Disponible;Accès contrôlé;Collectif;Oui;Non;Rue Marcel Paul;44000;Nantes;En ouvrage;Non;Oui;50;0;47.21517, -1.537742;0
+Pirmil collectif accès contrôlé;87;Disponible;Accès contrôlé;Collectif;Non;Oui;24 Rue Esnoult des Châtelets;44000;Nantes;Hors ouvrage;Oui;Oui;40;16;47.196412, -1.54272;16
+Decré / Bouffay;153;Disponible;Accès contrôlé;Collectif;Oui;Non;18 Rue du Moulin;44000;Nantes;En ouvrage;Oui;Oui;91;0;47.216696, -1.554224;0
+Bignon;6;Disponible;Accès libre;Individuel;Non;Oui;47 Rue des Verts Prés;44700;Orvault;Hors ouvrage;Non;Non;10;6;47.248985, -1.597849;6
+Hermeland;1;Disponible;Accès libre;Individuel;Non;Oui;Esplanade des quatre Vents;44800;Saint-Herblain;Hors ouvrage;Non;Non;4;4;47.230509, -1.616998;4
+Le Cardo;14;Disponible;Accès libre;Individuel;Non;Oui;1 Esplanade du Cardo;44700;Orvault;Hors ouvrage;Non;Non;3;1;47.262166, -1.584261;1
+Gare Nord Château n-1;139;Disponible;Accès contrôlé;Collectif;Oui;Non;27 Boulevard de Stalingrad;44000;Nantes;En ouvrage;Oui;Oui;87;0;47.217223, -1.543971;0
+Keren;79;Disponible;Accès libre;Individuel;Non;Oui;Rue de Keren;44000;Nantes;Hors ouvrage;Non;Non;4;1;47.244879, -1.532985;1
+Balinière;158;Disponible;Accès libre;Individuel;Non;Oui;Rue du Lieutenant de Monti de Rezé;44400;Rezé;Hors ouvrage;Non;Non;4;0;47.185811, -1.554631;0
+Vieux Cimetière;108;Disponible;Accès libre;Individuel;Non;Oui;Rue notre dame la Blanche;44470;Carquefou;Hors ouvrage;Non;Non;2;2;47.29651, -1.490854;2
+Marcel Paul P+R collectif accès libre;3;Disponible;Accès libre;Collectif;Non;Oui;73 Boulevard Marcel Paul;44800;Saint-Herblain;Hors ouvrage;Non;Non;12;6;47.2456566, -1.61754;6
+Quai Surcouf Sud;100;Disponible;Accès libre;Individuel;Non;Oui;11 Quai Surcouf;44400;Rezé;Hors ouvrage;Non;Non;3;3;47.19485, -1.577807;3
+Parc de la Sèvre;28;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Guichet Sérex;44120;Vertou;Hors ouvrage;Non;Non;6;4;47.164873, -1.480565;4
+Gare de Couëron collectif accès contrôlé;64;Disponible;Accès contrôlé;Collectif;Non;Oui;Rue de la Gare;44220;Couëron;Hors ouvrage;Non;Oui;48;25;47.221787, -1.723542;25
+Gare de Chantenay / Maréchal Juin;65;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Maréchal Juin;44000;Nantes;Hors ouvrage;Non;Non;6;0;47.1977531, -1.594356;0
+École Centrale Audencia;74;Disponible;Accès libre;Individuel;Non;Oui;1 Rue de la Noë;44000;Nantes;Hors ouvrage;Non;Non;6;3;47.248354, -1.551342;3
+Minais;103;Disponible;Accès libre;Individuel;Non;Oui;93 Route de Thouaré;44980;Sainte-Luce-sur-Loire;Hors ouvrage;Non;Non;4;0;47.256989, -1.466408;0
+Beaujoire;112;Disponible;Accès libre;Individuel;Non;Oui;Boulevard de la Beaujoire;44000;Nantes;Hors ouvrage;Non;Non;14;6;47.2593811, -1.5250433;6
+Jaguère;195;Disponible;Accès libre;Individuel;Non;Oui;Rue de l'Aérodrome;44400;Rezé;Hors ouvrage;Non;Non;2;0;47.175618, -1.567823;0
+Nefs - Prairie au Duc;62;Disponible;Accès libre;Individuel;Non;Oui;68 Boulevard de la Prairie au Duc;44000;Nantes;Hors ouvrage;Non;Non;4;1;47.204312, -1.564633;1
+Cyclostation;207;Disponible;Accès libre;Collectif;Non;Oui;27 boulevard Stalingrad;44000;Nantes;Hors ouvrage;Non;Non;692;0;47.21733895881617, -1.5433879120973242;0
+Ville au Denis;127;Disponible;Accès libre;Individuel;Non;Oui;Chemin de la Blanche;44340;Bouguenais;Hors ouvrage;Non;Non;2;0;47.1631, -1.62768;0
+Maraîchers;35;Disponible;Accès libre;Individuel;Non;Oui;Rue de la Grand' Maison;44120;Vertou;Hors ouvrage;Non;Non;4;1;47.185069, -1.5107;1
+Port Chassé;53;Disponible;Accès libre;Individuel;Non;Oui;Place du Champ de Foire;44640;Le Pellerin;Hors ouvrage;Non;Non;6;1;47.201658, -1.759226;1
+Gare de Pont Rousseau;89;Disponible;Accès libre;Individuel;Non;Oui;Rue de la Gare;44400;Rezé;Hors ouvrage;Non;Non;12;5;47.19251, -1.54865;5
+Les Faulx;32;Disponible;Accès libre;Individuel;Non;Oui;29 Rue de la Maillardière;44840;Les Sorinières;Hors ouvrage;Non;Non;2;0;47.1571703, -1.5231018;0
+Gare Maritime;63;Disponible;Accès libre;Individuel;Non;Oui;Rue Meuris;44000;Nantes;Hors ouvrage;Non;Non;6;0;47.207409, -1.5726;0
+Orvault - Grand Val;15;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Mendès France;44700;Orvault;Hors ouvrage;Non;Non;10;4;47.261892, -1.592018;4
+5 Chemins;180;Disponible;Accès libre;Individuel;Non;Oui;Giratoire des 5 Chemins;44470;Carquefou;Hors ouvrage;Non;Non;2;1;47.304853, -1.503821;1
+Les Machines;144;Disponible;Accès contrôlé;Collectif;Oui;Non;42 Rue de la Tour d'Auvergne;44000;Nantes;En ouvrage;Non;Oui;64;0;47.205761, -1.562694;0
+Pirmil;88;Disponible;Accès libre;Individuel;Non;Oui;25 Rue Esnoult des Châtelets;44000;Nantes;Hors ouvrage;Non;Non;8;1;47.195757, -1.543398;1
+Les Couëts;98;Disponible;Accès libre;Individuel;Non;Oui;4 Rue de la Chapelle;44340;Bouguenais;Hors ouvrage;Non;Non;6;1;47.181114, -1.586202;1
+Pont du Cens;8;Disponible;Accès libre;Individuel;Non;Oui;21 Route de Rennes;44000;Nantes;Hors ouvrage;Non;Non;4;1;47.2487689, -1.5771387;1
+Chat qui Guette;51;Disponible;Accès libre;Individuel;Non;Oui;6 Rue du Chat qui Guette;44640;Saint-Jean-de-Boiseau;Hors ouvrage;Non;Non;2;0;47.191877, -1.697278;0
+Chantrerie collectif accès libre;109;Disponible;Accès libre;Collectif;Non;Oui;Route de Gachet;44000;Nantes;Hors ouvrage;Non;Non;12;8;47.281958, -1.517335;8
+Gare Maritime collectif accès libre;160;Disponible;Accès libre;Collectif;Non;Oui;Quai Ernest Renaud;44100;Nantes;Hors ouvrage;Non;Non;48;15;47.206212, -1.573004;15
+François Mitterrand;166;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Salvador Allende;44800;Saint-Herblain;Hors ouvrage;Non;Non;14;13;;13
+La Croix;29;Disponible;Accès libre;Individuel;Non;Oui;Route des Sorinières;44120;Vertou;Hors ouvrage;Non;Non;4;3;47.165431, -1.486262;3
+Gare Maritime collectif accès contrôlé;159;Disponible;Accès contrôlé;Collectif;Non;Oui;Quai Ernest Renaud;44100;Nantes;Hors ouvrage;Non;Oui;48;0;47.206234, -1.573063;0
+Grande Lande;203;Disponible;Accès libre;Individuel;Non;Oui;Rue Pierre Mendès France;44230;Saint-Sébastien-sur-Loire;Hors ouvrage;Non;Non;2;1;47.191566, -1.496278;1
+Bretagne bis;222;Disponible;Accès contrôlé;Collectif;Oui;Non;Place de Bretagne;44000;Nantes;En ouvrage;Oui;Oui;48;0;47.21787, -1.558236;0
+Croix Jeannette;168;Disponible;Accès libre;Individuel;Non;Oui;Place de la Croix Jeannette;44340;Bouguenais;Hors ouvrage;Non;Non;6;1;47.172325, -1.621795;1
+Aire du Landas;210;Disponible;Accès libre;Individuel;Non;Oui;Rue du Landas;44640;Saint-Jean-de-Boiseau;Hors ouvrage;Non;Non;2;0;47.185059, -1.723106;0
+La Ferme;48;Disponible;Accès libre;Individuel;Non;Oui;12 Rue de la Ferme;44880;Sautron;Hors ouvrage;Non;Non;4;2;47.264158, -1.679388;2
+La Fabrique;186;Disponible;Accès libre;Individuel;Non;Oui;Rue Jean Marc Nattier;44100;Nantes;Hors ouvrage;Non;Non;2;0;47.225197, -1.591323;0
+Ragon;93;Disponible;Accès libre;Individuel;Non;Oui;Rue Ernest Sauvestre;44400;Rezé;Hors ouvrage;Non;Non;6;1;47.1653469, -1.542526;1
+Haut Moulin;126;Disponible;Accès libre;Individuel;Non;Oui;14 D751A / Rue de Nantes;44710;Saint-Léger-les-Vignes;Hors ouvrage;Non;Non;2;1;47.136659, -1.727156;1
+Marrière;204;Disponible;Accès libre;Individuel;Non;Oui;106 Rue du Croissant;44000;Nantes;Hors ouvrage;Non;Non;4;0;47.23758, -1.525192;0
+Prés;54;Disponible;Accès libre;Individuel;Non;Oui;4 Rue des Prés;44830;Brains;Hors ouvrage;Non;Non;4;2;47.1694, -1.722961;2
+Zola;70;Disponible;Accès libre;Individuel;Non;Oui;Place Emile Zola;44000;Nantes;Hors ouvrage;Non;Non;10;2;47.213982, -1.58632;2
+Croix Bonneau;69;Disponible;Accès libre;Individuel;Non;Oui;117, rue de la Convention;44000;Nantes;Hors ouvrage;Non;Non;4;0;47.209739, -1.59598;0
+Souillarderie;118;Disponible;Accès libre;Individuel;Non;Oui;Route de Sainte-Luce;44000;Nantes;Hors ouvrage;Non;Non;4;0;47.237941, -1.516161;0
+Calvaire;31;Disponible;Accès libre;Individuel;Non;Oui;50 Rue des Papillons;44840;Les Sorinières;Hors ouvrage;Non;Non;4;0;47.148327, -1.522173;0
+Gilarderie;40;Disponible;Accès libre;Individuel;Non;Oui;124 Rue de la Gilarderie / Rue des Bourdonnières;44000;Nantes;Hors ouvrage;Non;Non;4;0;47.187937, -1.520856;0
+Michelet;73;Disponible;Accès libre;Individuel;Non;Oui;41 Boulevard Michelet;44000;Nantes;Hors ouvrage;Non;Non;2;2;47.234622, -1.5567575;2
+La Houssinière;167;Disponible;Accès libre;Individuel;Non;Oui;2 Chemin de la Houssinère;44300;Nantes;Hors ouvrage;Non;Non;2;1;47.2397174, -1.5552567;1
+Talensac;151;Disponible;Accès contrôlé;Collectif;Oui;Non;9 Rue Le Nôtre;44000;Nantes;En ouvrage;Oui;Oui;43;0;47.219819, -1.557586;0
+Gare Routière de Vertou;26;Disponible;Accès libre;Individuel;Non;Oui;2 Rue de l'Hôpital;44120;Vertou;Hors ouvrage;Non;Non;4;3;47.168895, -1.471205;3
+Mairie des Sorinières;33;Disponible;Accès libre;Individuel;Non;Oui;49 Rue Georges Clémenceau;44840;Les Sorinières;Hors ouvrage;Non;Non;10;3;47.148581, -1.531167;3
+Les Anges;18;Disponible;Accès libre;Individuel;Non;Oui;Chemin Chapelle des Anges;44700;Orvault;Hors ouvrage;Non;Non;2;1;47.274943, -1.636941;1
+Mauvoisins;41;Disponible;Accès libre;Individuel;Non;Oui;63 Rue de la Gilarderie;44000;Nantes;Hors ouvrage;Non;Non;12;9;47.190286, -1.5252644;9
+Michel Rocher;227;Disponible;Accès libre;Individuel;Non;Oui;2, rue Michel Rocher;44200;Nantes;Hors ouvrage;Non;Non;2;2;47.206357, -1.549337;2
+Prairie de Mauves;23;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Prairie de Mauves;44000;Nantes;Hors ouvrage;Non;Non;6;0;47.2202305, -1.5165053;0
+Corbinerie;94;Disponible;Accès libre;Individuel;Non;Oui;123 Rue Ernest Sauvestre;44400;Rezé;Hors ouvrage;Non;Non;6;0;47.16145, -1.541913;0
+Vieux Doulon;120;Disponible;Accès libre;Individuel;Non;Oui;Place du Vieux Doulon;44000;Nantes;Hors ouvrage;Non;Non;4;1;47.235523, -1.503996;1
+Gare de Basse-Indre - Saint-Herblain collectif accès libre;194;Disponible;Accès libre;Collectif;Non;Oui;Rue de la Gare;44610;Basse-Indre;Hors ouvrage;Non;Non;20;13;47.204258, -1.660196;13
+Babinière collectif accès libre;77;Disponible;Accès libre;Collectif;Non;Oui;Avenue de la Babinière;44240;La-Chapelle-sur-Erdre;Hors ouvrage;Non;Non;24;6;47.259218, -1.545645;6
+La Courneuve;198;Disponible;Accès libre;Individuel;Non;Oui;Boulevard de Saint Georges;44840;Les Sorinières;Hors ouvrage;Non;Non;2;0;47.131731, -1.509594;0
+Mairie d'Indre;124;Disponible;Accès libre;Individuel;Non;Oui;Rue de l'Allier;44610;Indre;Hors ouvrage;Non;Non;2;0;47.200358, -1.668252;0
+Doumer;164;Disponible;Accès libre;Individuel;Non;Oui;Place Doumer;44036;Nantes;Hors ouvrage;Oui;Non;6;1;47.222184, -1.578839;1
+La Herdrie;178;Disponible;Accès libre;Individuel;Non;Oui;Route du Loroux Bottereau;44115;Basse-Goulaine;Hors ouvrage;Non;Non;4;3;47.197732, -1.454021;3
+Combattants d'Indochine;80;Disponible;Accès libre;Individuel;Non;Oui;Rond-Point des Combattants d'Indochine;44000;Nantes;Hors ouvrage;Non;Non;4;0;47.24232053065611, -1.5342755659599217;0
+Chassay;200;Disponible;Accès libre;Individuel;Non;Oui;Rue de la Loire / rue de Saintonge;44980;Sainte-Luce-sur-Loire;Hors ouvrage;Non;Non;4;1;47.245545, -1.484615;1
+Quai des Antilles;61;Disponible;Accès libre;Individuel;Non;Oui;Boulevard des Antilles;44000;Nantes;Hors ouvrage;Non;Non;4;0;47.203872, -1.569737;0
+Croix Truin;52;Disponible;Accès libre;Individuel;Non;Oui;33 rue de la Croix Truin;44640;Saint-Jean-de-Boiseau;Hors ouvrage;Non;Non;2;0;47.1914795, -1.7123438;0
+Porte de Vertou;34;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Auguste Priou;44120;Vertou;Hors ouvrage;Non;Non;4;1;47.180811, -1.5052531;1
+Neustrie P+R collectif accès contrôlé;133;Disponible;Accès contrôlé;Collectif;Non;Oui;Rue de la Neustrie;44340;Bouguenais;En ouvrage;Oui;Oui;50;0;47.176636, -1.593535;0
+Ecole Jacques Prévert;215;Disponible;Accès libre;Individuel;Non;Oui;4 rue Victor Hugo;44470;Carquefou;Hors ouvrage;Non;Non;2;0;47.282119, -1.484675;0
+Gare Sud 2 - Viséo 5B;189;Disponible;Accès contrôlé;Collectif;Oui;Non;Boulevard de Berlin;44000;Nantes;En ouvrage;Oui;Oui;55;0;47.216837, -1.53626;0
+Piano'cktail;162;Disponible;Accès libre;Individuel;Non;Oui;Rue Ginsheim Gustavsburg;44340;Bouguenais;Hors ouvrage;Non;Non;4;3;47.174558, -1.606085;3
+Gare de Basse-Indre - Saint-Herblain;45;Disponible;Accès libre;Individuel;Non;Oui;Gare de Basse-Indre;44610;Basse-Indre;Hors ouvrage;Non;Non;5;5;47.204339, -1.660414;5
+Vertou P+R collectif accès contrôlé;132;Disponible;Accès contrôlé;Collectif;Non;Oui;Boulevard Auguste Priou;44120;Vertou;En ouvrage;Oui;Oui;48;0;47.180198, -1.505053;0
+Allende;49;Disponible;Accès libre;Individuel;Non;Oui;2 Rue Eugène Pottier;44340;Bouguenais;Hors ouvrage;Non;Non;4;0;47.175382, -1.623851;0
+La Cochère;59;Disponible;Accès libre;Individuel;Non;Oui;Arrêt de bus la Cochère, ligne E8;44640;Le Pellerin;Hors ouvrage;Non;Non;6;6;47.200427, -1.778159;6
+Bout des Pavés Chauvinière;10;Disponible;Accès libre;Individuel;Non;Oui;42 Boulevard de la Chauvinière;44000;Nantes;Hors ouvrage;Non;Non;6;0;47.2532109, -1.5756496;0
+Egalité;68;Disponible;Accès libre;Individuel;Non;Oui;6 Boulevard Léon Jouhaux;44000;Nantes;Hors ouvrage;Non;Non;8;1;47.209643, -1.58893;1
+Lycée Appert;182;Disponible;Accès libre;Individuel;Non;Oui;Avenue Claude Antoine Peccot;44700;Orvault;Hors ouvrage;Non;Non;8;4;47.252275, -1.611313;4
+Edouard Normand;224;Disponible;Accès libre;Individuel;Non;Oui;21 Place Edouard Normand;44000;Nantes;Hors ouvrage;Non;Non;2;1;47.218754, -1.563837;1
+Marcel Paul P+R collectif accès contrôlé;2;Disponible;Accès contrôlé;Collectif;Non;Oui;73 Boulevard Marcel Paul;44800;Saint-Herblain;Hors ouvrage;Oui;Oui;23;13;47.24572, -1.61763;13
+Ranzay collectif accès contrôlé;78;Disponible;Accès contrôlé;Collectif;Non;Oui;Rue du Port Durand;44000;Nantes;Hors ouvrage;Non;Oui;24;11;47.252973, -1.530159;11
+Talensac bis;219;Disponible;Accès contrôlé;Collectif;Oui;Non;9 rue Le Nôtre;44000;Nantes;En ouvrage;Oui;Oui;47;0;47.219888, -1.558152;0
+Mairie de Doulon;122;Disponible;Accès libre;Individuel;Non;Oui;Boulevard Louis Millet;44000;Nantes;Hors ouvrage;Non;Non;6;1;47.226877, -1.519437;1
+Couëron - Océan;47;Disponible;Accès libre;Individuel;Non;Oui;Boulevard de l'Océan;44220;Couëron;Hors ouvrage;Non;Non;2;0;47.213505, -1.739216;0
+Carrière Misery;201;Disponible;Accès libre;Individuel;Non;Oui;Rue Joseph Cholet;44100;Nantes;Hors ouvrage;Non;Non;4;1;47.199286, -1.582959;1
+Planchonnais;102;Disponible;Accès libre;Individuel;Non;Oui;20 Rue de la Planchonnais;44980;Sainte-Luce-sur-Loire;Hors ouvrage;Non;Non;4;1;47.253386, -1.474976;1
+Guilbaudière;192;Disponible;Accès libre;Individuel;Non;Oui;Rue du Zambèze;44800;Saint-Herblain;Hors ouvrage;Non;Non;5;4;47.242956, -1.620462;4
+Neustrie;58;Disponible;Accès libre;Individuel;Non;Oui;7, rue de la Neustrie;44340;Bouguenais;Hors ouvrage;Non;Non;12;6;47.177799, -1.591559;6
+Polytech';129;Disponible;Accès libre;Individuel;Non;Oui;Boulevard des Européens;44000;Nantes;Hors ouvrage;Non;Non;2;1;47.280903, -1.513956;1
+Pressoir;66;Disponible;Accès libre;Individuel;Non;Oui;Rue du pressoir;44860;Saint-Aignan-de-Grandlieu;Hors ouvrage;Non;Non;2;0;47.123209, -1.635094;0
+La Herdrie Lycée;187;Disponible;Accès libre;Individuel;Non;Oui;Rue de la Basse-Lande;44115;Basse-Goulaine;Hors ouvrage;Non;Non;4;3;47.197869, -1.452554;3
+Trocardière;96;Disponible;Accès libre;Individuel;Non;Oui;2187 Avenue Léon Blum;44400;Rezé;Hors ouvrage;Non;Non;10;6;47.1833451, -1.5702806;6
+Viarme / Talensac;71;Disponible;Accès libre;Individuel;Non;Oui;Place Viarme;44000;Nantes;Hors ouvrage;Non;Non;2;0;47.221532, -1.563019;0
+Paquelais;5;Disponible;Accès libre;Individuel;Non;Oui;Avenue de la Morlière;44700;Orvault;Hors ouvrage;Non;Non;10;7;47.247758, -1.602795;7
+Chantrerie collectif accès contrôlé;110;Disponible;Accès contrôlé;Collectif;Non;Oui;Route de Gachet;44000;Nantes;Hors ouvrage;Non;Oui;34;32;47.281887, -1.517258;32
+Moutonnerie;226;Disponible;Accès libre;Individuel;Non;Oui;3, rue Francisco Ferrer;44000;Nantes;Hors ouvrage;Non;Non;2;2;47.219893, -1.532835;2
+Gare de Couëron collectif accès libre;131;Disponible;Accès libre;Collectif;Non;Oui;Rue de la Gare;44220;Couëron;Hors ouvrage;Non;Non;20;13;47.221826, -1.723504;13
+Porte de Rezé collectif accès contrôlé;161;Disponible;Accès contrôlé;Collectif;Non;Oui;Rond-Point des Grand'Vignes;44400;Rezé;Hors ouvrage;Non;Oui;12;7;47.157113, -1.541321;7
+Parc;208;Disponible;Accès libre;Individuel;Non;Oui;Avenue des Villages;44470;Carquefou;Hors ouvrage;Non;Non;2;1;47.27288580930053, -1.4838195383215644;1
+Saint-Félix;72;Disponible;Accès libre;Individuel;Non;Oui;2 Boulevard Michelet;44000;Nantes;Hors ouvrage;Non;Non;4;0;47.230997, -1.556603;0
+Mairie de Chantenay;67;Disponible;Accès libre;Individuel;Non;Oui;Place de la Liberté;44000;Nantes;Hors ouvrage;Non;Non;6;0;47.206174, -1.588583;0
+Rouet;30;Disponible;Accès libre;Individuel;Non;Oui;31 Rue des Papillons;44840;Les Sorinières;Hors ouvrage;Non;Non;8;5;47.146719, -1.518884;5
+Beauséjour;7;Disponible;Accès libre;Individuel;Non;Oui;Rue du Chêne Vert;44800;Saint-Herblain;Hors ouvrage;Non;Non;4;1;47.238591, -1.587565;1
+Commerce;145;Disponible;Accès contrôlé;Collectif;Oui;Non;Allée Brancas;44000;Nantes;En ouvrage;Oui;Oui;280;0;47.213344, -1.557214;0
+Château d'Aux;211;Disponible;Accès libre;Individuel;Non;Oui;51 Route de Bouguenais;44620;La Montagne;Hors ouvrage;Non;Non;2;2;47.185062328755635, -1.674415994348237;2
+République;81;Disponible;Accès libre;Individuel;Non;Oui;Place de la République;44000;Nantes;Hors ouvrage;Non;Non;4;1;47.205515, -1.554297;1
+3 Moulins;92;Disponible;Accès libre;Individuel;Non;Oui;Rue Aristide Briand;44400;Rezé;Hors ouvrage;Non;Non;8;5;47.178202, -1.544143;5
+Gare Sud 3;142;Abo. complets;Accès contrôlé;Collectif;Oui;Non;38 Rue du Pré Gauchet;44000;Nantes;En ouvrage;Oui;Oui;95;0;47.214774, -1.539395;0
+Croix de Mauves;130;Disponible;Accès libre;Individuel;Non;Oui;Parking de la Croix;44470;Mauves-sur-Loire;Hors ouvrage;Non;Non;4;0;47.300453, -1.398012;0
+Piscine de Vertou;27;Disponible;Accès libre;Individuel;Non;Oui;10 Rue Sèvre et Maine;44120;Vertou;Hors ouvrage;Non;Non;4;4;47.164769, -1.46934;4
+Vincent Auriol;185;Disponible;Accès libre;Individuel;Non;Oui;Place Vincent Auriol;44100;Nantes;Hors ouvrage;Non;Non;2;0;47.222112, -1.591774;0
+Mairie d'Orvault;19;Disponible;Accès libre;Individuel;Non;Oui;Place de l'Eglise;44700;Orvault;Hors ouvrage;Non;Non;4;0;47.270978, -1.623617;0
+Grignon;101;Disponible;Accès libre;Individuel;Non;Oui;Rue du Grignon;44115;Basse-Goulaine;Hors ouvrage;Non;Non;6;0;47.216425, -1.4665954;0

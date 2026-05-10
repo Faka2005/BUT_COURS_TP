@@ -1,0 +1,44 @@
+package testexo2
+
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
+
+class TestSingletonsEtEgaliteVaisseaux {
+
+    @Test
+    fun testSingletonInutilisable() {
+        val instance1 = exo2.INUTILISABLE
+        val instance2 = exo2.INUTILISABLE
+        assertSame(instance1, instance2)
+    }
+
+    @Test
+    fun testSingletonLibre() {
+        val instance1 = exo2.LIBRE
+        val instance2 = exo2.LIBRE
+        assertSame(instance1, instance2)
+    }
+
+    @Test
+    fun testSingletonDifferent() {
+        val instanceInutilisable = exo2.INUTILISABLE
+        val instanceLibre = exo2.LIBRE
+        assertNotSame(instanceInutilisable, instanceLibre)
+        assertNotEquals(instanceInutilisable, instanceLibre)
+    }
+
+    @Test
+    fun testMemesVaisseauxDiff() {
+        val vaisseau1 = exo2.Vaisseau("Enterprise", exo2.TypeVaisseau.CARGO)
+        val vaisseau2 = exo2.Vaisseau("Enterprise", exo2.TypeVaisseau.CARGO)
+        assertNotSame(vaisseau1, vaisseau2)
+        assertEquals(vaisseau1, vaisseau2)
+    }
+
+    @Test
+    fun testVaisseauDiffSingleton() {
+        val vaisseau1 = exo2.Vaisseau("Falcon", exo2.TypeVaisseau.FREGATE)
+        assertNotSame(vaisseau1, exo2.LIBRE)
+        assertNotSame(vaisseau1, exo2.INUTILISABLE)
+    }
+}

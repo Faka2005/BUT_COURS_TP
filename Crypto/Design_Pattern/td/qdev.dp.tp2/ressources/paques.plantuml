@@ -1,0 +1,48 @@
+@startuml
+hide circle
+skinparam monochrome true
+skinparam classAttributeIconSize 0
+skinparam backgroundcolor white
+skinparam groupInheritance 4
+
+class Paques << interface >> {
+ + calculeDatePaques(annee: Int): Date
+ + historiqueResultats(): List<Date>
+ + historiqueResultatsTries(): List<Date>
+ + historiqueResultatsTriesAutrement(): List<Date>
+}
+
+class PaquesJulienne {
++ calculeDatePaques(annee: Int): Date
+ + historiqueResultats(): List<Date>
+ + historiqueResultatsTries(): List<Date>
+ + historiqueResultatsTriesAutrement(): List<Date>
+}
+
+class PaquesGregorienne {
++ calculeDatePaques(annee: Int): Date
+ + historiqueResultats(): List<Date>
+ + historiqueResultatsTries(): List<Date>
+ + historiqueResultatsTriesAutrement(): List<Date>
+}
+
+PaquesGregorienne .up.|> Paques : << realizes >>
+PaquesJulienne .up.|> Paques : << realizes >>
+
+class Date {
+ - jour: Int {readonly}
+ - mois: Int {readonly}
+ - annee: Int {readonly}
+ + <<create>> Date(j: Int, m: Int, a: Int)
+ + toString(): String
+ + equals(other: Any?): Boolean
+ + hashCode(): Int
+ + dateValide(): Boolean
+ + {static} fabrique(str: String): Date
+}
+
+Paques .right.> Date : << uses >>
+
+Paques .left.> PaquesException : << throws >>
+
+@enduml

@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">TpSae</string>
+    <string name="search_placeholder">Search a movie or a serie...</string>
+    <string name="filter_btn_open">Filters &amp; Genres</string>
+    <string name="filter_btn_close">Close filters</string>
+    <string name="sort_by_label">Sort by :</string>
+    <string name="genres_label">Genres :</string>
+    <string name="category_label">Category :</string>
+    <string name="sort_popular">Popular</string>
+    <string name="sort_top_rated">Top rated</string>
+    <string name="sort_latest">Latest</string>
+    <string name="details_back">Back</string>
+    <string name="titre_home">Discover</string>
+    <string name="soustitre_home_films">Movies</string>
+    <string name="soustitre_home_serie">Series</string>
+    <string name="no_synopsis">No synopsis.</string>
+    <string name="quizz_title">The Cine-Quizz</string>
+    <string name="quizz_q1">1. What are you looking for?</string>
+    <string name="quizz_q2">2. Minimum rating: %1$d/10</string>
+    <string name="quizz_q3">3. Vibe?</string>
+    <string name="quizz_q4">4. Which genre?</string>
+    <string name="quizz_type_all">All</string>
+    <string name="quizz_pop_blockbuster">Blockbusters</string>
+    <string name="quizz_pop_hidden">Hidden Gems</string>
+    <string name="quizz_pop_any">Any</string>
+    <string name="quizz_btn_launch">Discover</string>
+    <string name="quizz_btn_reroll">Reroll</string>
+    <string name="quizz_results">Results:</string>
+    <string name="quizz_no_results">No matching results...</string>
+</resources>

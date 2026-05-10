@@ -1,0 +1,4 @@
+# Ignorer tous les fichiers téléchargés dans ce dossier
+*
+# Ne pas ignorer ce .gitignore lui-même
+!.gitignore

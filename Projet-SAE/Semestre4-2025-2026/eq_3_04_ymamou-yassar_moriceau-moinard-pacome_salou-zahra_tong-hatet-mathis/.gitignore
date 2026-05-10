@@ -1,0 +1,4 @@
+node_modules
+# Mongo memory runtime data
+mongo-memory/
+.idea

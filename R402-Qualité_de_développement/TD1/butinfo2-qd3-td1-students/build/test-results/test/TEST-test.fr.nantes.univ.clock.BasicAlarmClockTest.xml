@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.fr.nantes.univ.clock.BasicAlarmClockTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-01-28T11:10:19.967Z" hostname="VivoBook" time="0.037">
+  <properties/>
+  <testcase name="switchOff()" classname="test.fr.nantes.univ.clock.BasicAlarmClockTest" time="0.037"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

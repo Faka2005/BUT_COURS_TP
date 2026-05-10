@@ -1,0 +1,73 @@
+@startuml
+
+package tp9 {
+
+package model {
+    artifact Fruit
+}
+
+package exceptions {
+    artifact FruitDejaPresentException
+    artifact ImportFruitsException
+ImportFruitsException -[hidden]- FruitDejaPresentException
+}
+
+package dao {
+    artifact FruitDAO <<interface>>
+    artifact FruitJsonDAO
+    artifact FruitH2DAO
+    artifact FruitCsvDAO
+    artifact FruitSqliteDAO
+    artifact FruitMariaDbDAO
+
+    FruitJsonDAO -up-|> FruitDAO
+    FruitH2DAO -up-|> FruitDAO
+    FruitCsvDAO -up-|> FruitDAO
+    FruitSqliteDAO -up-|> FruitDAO
+    FruitMariaDbDAO -up-|> FruitDAO
+
+    FruitSqliteDAO -up[hidden]- FruitH2DAO
+    FruitMariaDbDAO -up[hidden]- FruitH2DAO
+
+}
+
+    dao .> Fruit : <<uses>>
+    dao ..> FruitDejaPresentException : <<throws>>
+    dao ..> ImportFruitsException : <<throws>>
+
+}
+
+
+node server {
+    component MariaDB {
+        database database_fruits {
+            database "DB_Fruits" as DBMariaDB
+        }
+    }
+}
+
+
+package data {
+
+    file "fruits.json" as json
+
+    file "fruits.csv" as csv
+
+    file "fruits.sqlite" {
+        database "DB_Fruits" as DBsqlite
+    }
+
+    file fruits.h2.mv.db {
+        database "DB_Fruits" as DBh2
+    }
+
+}
+
+FruitJsonDAO ..> json : <<reads/writes>>
+FruitCsvDAO ..> csv : <<reads/writes>>
+FruitH2DAO ..> DBh2 : <<requests>>
+FruitSqliteDAO ..> DBsqlite : <<requests>>
+
+FruitMariaDbDAO ..> DBMariaDB : <<requests>>
+
+@enduml
